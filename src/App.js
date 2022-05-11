@@ -1,11 +1,11 @@
-import logo from './logo.svg';
+import NavBar from "../src/components/NavBar"
 import './App.css';
 
 function App() {
   return (
-    <div>
-      App React de Maxi
-    </div>
+    <>
+    <NavBar />
+    </>
   );
 }
 
