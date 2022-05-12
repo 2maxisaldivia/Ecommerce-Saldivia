@@ -1,10 +1,16 @@
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
+import React from "react"
+import { 
+  AppBar, 
+  Toolbar, 
+  Typography, 
+  Button, 
+  IconButton}  from '@mui/material';
+import CartWidget from "./CartWidget";
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 
-function NavBar() {
+
+export default function NavBar() {
 
     const logoStyles = {
         width: "7rem",
@@ -13,31 +19,34 @@ function NavBar() {
     const appBarStyles = {
         backgroundColor : "#000"
     }
+    const colorStyle = {
+      color:"#94ff8f",
+      padding: "0.2rem"
+    }
 
     return(
-        <>
-       
+        <>  
       <AppBar style={appBarStyles} position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-
-          </IconButton>
+          
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <img style={logoStyles} src='./images/logo-app.png'></img>
+          <img style={logoStyles} src='./images/logo-app.png'/>
           </Typography>
-          <Button color="inherit">Productos</Button>
-          <Button color="inherit">  Iniciar Sesion </Button>
-          <Button color="inherit">Registrarse</Button>
+
+          <Button color="inherit">  
+            <ExitToAppIcon  />
+            <div style={colorStyle}>Iniciar Sesion</div> 
+          </Button>
+
+          <Button color="inherit">
+            <PersonAddAltIcon  />
+            <div style={colorStyle}>Registrarse</div>
+            </Button>
+
+          <CartWidget numberCart={15} />
+          
         </Toolbar>
       </AppBar>
-    </>
-           
+    </>  
     )
 }
-export default NavBar;
