@@ -6,8 +6,10 @@ import {
   Button, 
   IconButton}  from '@mui/material';
 import CartWidget from "./CartWidget";
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
+import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
+import LunchDiningIcon from '@mui/icons-material/LunchDining';
+// import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+// import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 
 
 export default function NavBar() {
@@ -15,7 +17,6 @@ export default function NavBar() {
     const logoStyles = {
         width: "7rem",
     }
-    
     const appBarStyles = {
         backgroundColor : "#000"
     }
@@ -34,6 +35,18 @@ export default function NavBar() {
           </Typography>
 
           <Button color="inherit">  
+            <LocalPizzaIcon  />
+            <div style={colorStyle}>Pizzas</div> 
+          </Button>
+
+          <Button color="inherit">
+            <LunchDiningIcon  />
+            <div style={colorStyle}>Hamburguesas</div>
+          </Button>
+
+          {/* {Botones iniciar sesion y registrarse.} */}
+
+          {/* <Button color="inherit">  
             <ExitToAppIcon  />
             <div style={colorStyle}>Iniciar Sesion</div> 
           </Button>
@@ -41,7 +54,7 @@ export default function NavBar() {
           <Button color="inherit">
             <PersonAddAltIcon  />
             <div style={colorStyle}>Registrarse</div>
-            </Button>
+            </Button> */}
 
           <CartWidget numberCart={15} />
           
