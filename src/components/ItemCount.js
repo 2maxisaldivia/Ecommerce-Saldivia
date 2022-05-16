@@ -6,7 +6,8 @@ import IconButton from '@mui/material/IconButton';
 
 function ItemCount({stock, initial}) {
     const ButtonGroupStyles = {
-        marginLeft: "20%"
+        marginLeft: "2%",
+        width: "8rem"
     }
     const buttonStyles = {
         backgroundColor: "#000",
@@ -15,7 +16,9 @@ function ItemCount({stock, initial}) {
     }
     const divStyles = {
         fontSize: "18pt",
-        color: "#fff"
+        color: "#000",
+        width: "100%",
+        textAlign: "center",
     }
 
     const [count, setCount] = useState(initial);
