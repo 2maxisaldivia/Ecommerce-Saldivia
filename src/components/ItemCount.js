@@ -10,13 +10,13 @@ function ItemCount({stock, initial}) {
         width: "8rem"
     }
     const buttonStyles = {
-        backgroundColor: "#000",
+        backgroundColor: "#272727",
         color: "#94ff8f",
         borderColor: "#000"
     }
     const divStyles = {
         fontSize: "18pt",
-        color: "#000",
+        color: "#fff",
         width: "100%",
         textAlign: "center",
     }
@@ -24,7 +24,7 @@ function ItemCount({stock, initial}) {
     const [count, setCount] = useState(initial);
 
     return (
-        <div>
+        <div style={{display:"flex", justifyContent: "right", paddingTop: "30%", paddingBottom: "0%"}}>
         <ButtonGroup disableElevation variant="contained" style={ButtonGroupStyles}>
             <IconButton onClick={() => setCount(count > initial ? count - 1 : count)} style={buttonStyles}> <RemoveIcon /> </IconButton>
             <div style={divStyles}>{count}</div>

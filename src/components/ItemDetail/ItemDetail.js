@@ -3,31 +3,37 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
-
+import ItemCount from './../ItemCount';
 function ItemDetail({product}) {
 
   return (
     <>
- <Card sx={{ display: 'flex', width:"80%", height: "100%", marginTop:"3%", marginLeft: "10%", backgroundColor:"#000" }}>
-    <CardMedia component="img" sx={{ margin: "5%", width: 400 }} image={product.pictureUrl} />
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <CardContent sx={{width: "100%"}}>
-          <Typography sx={{display: "flex", justifyContent: "flex-end", color: "#94ff8f"}} component="div" variant="h5">
-            {product.title}
-          </Typography>
-          <Typography sx={{display: "flex", justifyContent: "flex-end", color: "#94ff8f"}} variant="subtitle1" color="text.secondary" component="div">
-            {product.description}
-          </Typography>
-          <Typography sx={{display: "flex", justifyContent: "flex-end", color: "#94ff8f"}} variant="subtitle1" color="text.secondary" component="div">
-            ${product.price}
-          </Typography>
-        </CardContent>
-      </Box>
+      <Card sx={{ display: 'flex', width:"76%", height: "100%", marginTop:"3%", marginLeft: "10%", backgroundColor:"#000" }}>
+        <Box sx={{display: "grid", gridTemplateColumns: "repeat(2, 1fr)"}}>
+            <Box>
+            <Typography sx={{display: "flex", paddingLeft: "10%",color: "#94ff8f", fontSize:"50pt", fontWeight:"700"}} component="div" variant="h6">
+                {product.title}
+            </Typography>
+            <CardMedia component="img" sx={{width: 600, paddingLeft: "10%" }} image={product.pictureUrl} />
+            <Typography sx={{display: "flex", paddingLeft:"10%", color: "#94ff8f", fontSize: "35pt", fontWeight:"700"}} variant="subtitle1" component="div">
+                SubTotal: ${product.price}
+            </Typography>
+          </Box>
+          <Box sx={{display:"flex", paddingTop: "14%", paddingRight: "10%"}}>
+            <CardContent sx={{width: "100%"}}>
+              <Typography sx={{display: "flex", justifyContent: "flex-start", color: "#94ff8f", fontSize: "20pt", fontWeight:"600", textAlign: "right", textDecoration: "underline", marginTop:"1rem"}} variant="subtitle1" component="div">
+                  Ingredientes:
+              </Typography>
+              <Typography sx={{display: "flex", justifyContent: "flex-start", color: "#94ff8f", fontSize: "20pt", fontWeight:"300"}} variant="subtitle1" component="div">
+                  {product.description}
+              </Typography>
+              <ItemCount  stock={5} initial={0} style={{display: "flex", alignContent: "center"}}/>
+            </CardContent>
+            
+          </Box>
+        </Box>
+        
     </Card>
     </>
   )

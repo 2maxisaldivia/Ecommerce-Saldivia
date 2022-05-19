@@ -8,22 +8,21 @@ import Typography from '@mui/material/Typography';
 function Item({product}) {
   const buttonStyles = {
     color: "#94ff8f",
-    borderColor: "#94ff8f"
+    borderColor: "#94ff8f", 
+    marginBottom: ".5rem"
   }
 
   return (
     <>
-    <Card sx={{ maxWidth: 300, margin: 3, backgroundColor:"#000", }}>
-      <CardMedia component="img" height="140" src={product.pictureUrl} />
+      <Card sx={{ maxWidth: 300, margin: 3, backgroundColor:"#000", }}>
+      <CardMedia component="img" sx={{height:"150px", width:"300px"}} src={product.pictureUrl} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div" color="#fff">{product.title}</Typography>
-        <Typography variant="body2" color="#fff">{product.description}</Typography>
         <h4 style={{color: "#fff"}}>${product.price}</h4>
+        <Button style={buttonStyles} variant="outlined">Ver detalle</Button>
         <Button style={buttonStyles} variant="outlined">Añadir al carrito</Button>
       </CardContent>
-
-    </Card> 
-   
+      </Card> 
     </>
   )
 }

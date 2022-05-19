@@ -7,13 +7,16 @@ function ItemDetailContainer() {
     useEffect(() => {
         const productDetail = new Promise((res, rej) =>{
             setTimeout(() => {
-                res({
-                        id: 1,
-                        title: "Lomo Completo",
-                        description: "Lomo, tomate, lechuga, huevo, jamon, queso, bacon",
-                        price: "900",
-                        pictureUrl: "https://www.clarin.com/img/2021/07/26/el-lomito-uno-de-los___u-aUfp64d_1256x620__1.jpg"
-                    });  
+                res(
+                    {
+                        id: 9,
+                        title: "Baconized",
+                        description: "Mayonesa, doble queso cheddar, trozos de bacon, cebolla caramelizada, carne y papas.", 
+                        price: "700",
+                        pictureUrl: "https://malevamag.com/wp-content/uploads/2019/12/destacada-2.jpg",
+                        category: 3
+                    }
+                    );  
              
                 rej("Promesa incumplida");
 
@@ -34,7 +37,7 @@ function ItemDetailContainer() {
     
     
   return (
-    <div>
+    <div className='maximiliano' style={{width: "100%", height:"100%"}}>
         <ItemDetail product={product}/>
     </div>
   )

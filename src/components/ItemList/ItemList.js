@@ -6,8 +6,10 @@ function ItemList({products, loading, error}) {
   return (
     <>
     {loading && <Loading />}
-
-    {products && products.map((product) => <Item key={product.id} product={product}/>)}
+    <div style={{display: "grid", gridTemplateColumns: "repeat(5, 1fr)"}}>
+      {products && products.map((product) => <Item key={product.id} product={product}/>)}
+    </div>
+   
 
     {error && "Error al cargar el catalogo de productos"}
     </>

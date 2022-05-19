@@ -8,6 +8,7 @@ import {
 import CartWidget from "./CartWidget";
 import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
 import LunchDiningIcon from '@mui/icons-material/LunchDining';
+import { Link } from "react-router-dom";
 // import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 // import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 
@@ -31,7 +32,9 @@ export default function NavBar() {
         <Toolbar>
           
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <img style={logoStyles} src='./images/logo-app.png'/>
+          
+          <Link to={"/"}> <img style={logoStyles} src='./images/logo-app.png'/> </Link>
+          
           </Typography>
 
           <Button color="inherit">  
