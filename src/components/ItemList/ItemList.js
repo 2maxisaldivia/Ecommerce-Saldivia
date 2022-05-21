@@ -9,11 +9,10 @@ function ItemList({products, loading, error}) {
     <div style={{display: "grid", gridTemplateColumns: "repeat(5, 1fr)"}}>
       {products && products.map((product) => <Item key={product.id} product={product}/>)}
     </div>
-   
 
     {error && "Error al cargar el catalogo de productos"}
     </>
   )
 }
 
-export default ItemList
+export default ItemList;

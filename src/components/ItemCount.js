@@ -24,7 +24,7 @@ function ItemCount({stock, initial}) {
     const [count, setCount] = useState(initial);
 
     return (
-        <div style={{display:"flex", justifyContent: "right", paddingTop: "30%", paddingBottom: "0%"}}>
+        <div style={{display:"flex", justifyContent: "right", paddingTop: "30%", paddingBottom: "0%", paddingRight:"4%"}}>
         <ButtonGroup disableElevation variant="contained" style={ButtonGroupStyles}>
             <IconButton onClick={() => setCount(count > initial ? count - 1 : count)} style={buttonStyles}> <RemoveIcon /> </IconButton>
             <div style={divStyles}>{count}</div>

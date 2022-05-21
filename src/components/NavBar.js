@@ -12,39 +12,27 @@ import { Link } from "react-router-dom";
 // import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 // import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 
-
 export default function NavBar() {
-
-    const logoStyles = {
-        width: "7rem",
-    }
-    const appBarStyles = {
-        backgroundColor : "#000"
-    }
-    const colorStyle = {
-      color:"#94ff8f",
-      padding: "0.2rem"
-    }
 
     return(
         <>  
-      <AppBar style={appBarStyles} position="static">
+      <AppBar sx={{ backgroundColor : "#000"}} position="static">
         <Toolbar>
           
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           
-          <Link to={"/"}> <img style={logoStyles} src='./images/logo-app.png'/> </Link>
+          <Link to={"/"}> <img style={{width: "7rem",}} src='./images/logo-app.png'/> </Link>
           
           </Typography>
 
           <Button color="inherit">  
             <LocalPizzaIcon  />
-            <div style={colorStyle}>Pizzas</div> 
+            <div style={{color:"#94ff8f", padding: "0.2rem"}}>Pizzas</div> 
           </Button>
 
           <Button color="inherit">
             <LunchDiningIcon  />
-            <div style={colorStyle}>Hamburguesas</div>
+            <div style={{color:"#94ff8f", padding: "0.2rem"}}>Hamburguesas</div>
           </Button>
 
           {/* {Botones iniciar sesion y registrarse.} */}
