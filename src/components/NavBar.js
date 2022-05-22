@@ -26,6 +26,7 @@ export default function NavBar() {
           <Link to={"/"}> <img style={{width: "7rem",}} src='./images/logo-app.png'/> </Link>
           
           </Typography>
+          
 
           <Link style={{textDecoration: "none"}} to={"/category/lomos"}>
             <Button color="inherit">
