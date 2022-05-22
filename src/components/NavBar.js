@@ -3,11 +3,13 @@ import {
   AppBar, 
   Toolbar, 
   Typography, 
-  Button, 
+  Button,
+  Box,
   IconButton}  from '@mui/material';
 import CartWidget from "./CartWidget";
 import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
 import LunchDiningIcon from '@mui/icons-material/LunchDining';
+import BrunchDiningIcon from '@mui/icons-material/BrunchDining';
 import { Link } from "react-router-dom";
 // import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 // import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
@@ -24,6 +26,13 @@ export default function NavBar() {
           <Link to={"/"}> <img style={{width: "7rem",}} src='./images/logo-app.png'/> </Link>
           
           </Typography>
+
+          <Link style={{textDecoration: "none"}} to={"/category/lomos"}>
+            <Button color="inherit">
+              <BrunchDiningIcon />
+              <div style={{color:"#94ff8f", padding: "0.2rem"}}>Lomos</div>
+            </Button>
+          </Link>
 
           <Button color="inherit">  
             <LocalPizzaIcon  />

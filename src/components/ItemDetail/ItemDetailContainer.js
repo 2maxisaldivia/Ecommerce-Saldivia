@@ -18,6 +18,7 @@ function ItemDetailContainer() {
                     if(item.id == id){
                         console.log("lo encontre", item)
                         setProduct(item)
+                        
                     }
                 })
             }

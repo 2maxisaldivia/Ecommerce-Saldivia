@@ -17,17 +17,16 @@ function ItemListContainer() {
     productsInfo()
     .then(
       items => {
-        console.log("products", items)
-        items.filter((item)=>{
+        console.log("items", items)  
+        setProducts(items)
+        items.map((item)=>{
           if(item.category == id){
+            setProducts([item])
             console.log("item", item)
             console.log("lo encontre")
-            setProducts([item])
+            
           } 
-          // setProducts(filtrados)
         })
-        
-        
       })
     .catch((error) => {
       console.log(error)
@@ -42,6 +41,7 @@ function ItemListContainer() {
   return (
     <>
     <Box sx={{display:"flex", flexDirection: "row"}}>
+      {products.title}
       <ItemList products={products} loading={loading} error= {error}/>
     </Box>
     </>
