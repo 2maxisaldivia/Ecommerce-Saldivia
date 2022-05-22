@@ -4,8 +4,7 @@ import {
   Toolbar, 
   Typography, 
   Button,
-  Box,
-  IconButton}  from '@mui/material';
+  Box}  from '@mui/material';
 import CartWidget from "./CartWidget";
 import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
 import LunchDiningIcon from '@mui/icons-material/LunchDining';
@@ -28,22 +27,27 @@ export default function NavBar() {
           </Typography>
           
 
-          <Link style={{textDecoration: "none"}} to={"/category/lomos"}>
+          <Link style={{textDecoration: "none", color: "#fff"}} to="/category/lomos">
             <Button color="inherit">
               <BrunchDiningIcon />
-              <div style={{color:"#94ff8f", padding: "0.2rem"}}>Lomos</div>
+              <Box style={{color:"#94ff8f", padding: "0.2rem"}}>Lomos</Box>
             </Button>
           </Link>
 
-          <Button color="inherit">  
-            <LocalPizzaIcon  />
-            <div style={{color:"#94ff8f", padding: "0.2rem"}}>Pizzas</div> 
-          </Button>
-
-          <Button color="inherit">
-            <LunchDiningIcon  />
-            <div style={{color:"#94ff8f", padding: "0.2rem"}}>Hamburguesas</div>
-          </Button>
+          <Link style={{textDecoration: "none", color: "#fff"}} to={"/category/pizzas"}>
+            <Button color="inherit">  
+              <LocalPizzaIcon  />
+              <Box style={{color:"#94ff8f", padding: "0.2rem"}}>Pizzas</Box> 
+            </Button>
+          </Link>
+          
+          <Link style={{textDecoration: "none", color: "#fff"}} to={"/category/hamburguesas"}>
+            <Button color="inherit">
+              <LunchDiningIcon  />
+              <Box style={{color:"#94ff8f", padding: "0.2rem"}}>Hamburguesas</Box>
+            </Button>
+          </Link>
+          
 
           {/* {Botones iniciar sesion y registrarse.} */}
 
@@ -58,7 +62,7 @@ export default function NavBar() {
             </Button> */}
 
           <CartWidget numberCart={15} />
-          
+
         </Toolbar>
       </AppBar>
     </>  
