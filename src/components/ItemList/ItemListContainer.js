@@ -32,7 +32,9 @@ function ItemListContainer() {
             console.log("lo encontre")
             console.log("lista de prueba", item)
             setProducts(listaFiltrada)
-          } 
+          }else{
+            setProducts(listaFiltrada)
+          }
         })
       })
     .catch((error) => {
