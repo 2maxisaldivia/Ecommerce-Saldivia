@@ -1,9 +1,11 @@
+// @ts-check
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemList/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetail/ItemDetailContainer';
 import NotFound from './components/NotFound';
+import Cart from './components/Cart';
 
 
 function App() {
@@ -15,6 +17,7 @@ function App() {
         <Route path='/' element={<ItemListContainer />}/>
         <Route path='/category/:categoryId' element={<ItemListContainer />}/>
         <Route path="/item/:id" element={<ItemDetailContainer />}/>
+        <Route path="/cart" element={<Cart />}/>
         <Route path="/*" element={<NotFound />}/>
       </Routes>
     </BrowserRouter>

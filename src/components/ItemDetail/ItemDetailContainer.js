@@ -1,3 +1,4 @@
+// @ts-check
 import React, {useEffect, useState} from 'react'
 import ItemDetail from './ItemDetail';
 import { Box } from '@mui/system';
@@ -30,7 +31,7 @@ function ItemDetailContainer() {
     
     
   return (
-    <Box style={{width: "100%", height:"100%"}}>
+    <Box sx={{width: "100%", height:"100%"}}>
         <ItemDetail product={product}/>
     </Box>
   )

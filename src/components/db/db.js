@@ -83,8 +83,10 @@ export const productsInfo =  () => {
                 pictureUrl: "https://malevamag.com/wp-content/uploads/2019/12/destacada-2.jpg",
                 category: "hamburguesas"
             }
+            
         ])
-    }, 2000)
+        rej()
+    }, 1000)
   })
 }
 

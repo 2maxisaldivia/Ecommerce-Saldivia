@@ -1,3 +1,4 @@
+// @ts-check
 import { Box } from '@mui/system';
 import React, {useEffect, useState} from 'react'
 import ItemList from './ItemList';

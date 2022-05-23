@@ -1,3 +1,4 @@
+// @ts-check
 import React, {useEffect} from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -16,7 +17,7 @@ function Item({product}) {
       <CardContent>
         <Typography gutterBottom variant="h5" component="div" color="#fff">{product.title}</Typography>
         <h4 style={{color: "#fff"}}>${product.price}</h4>
-        <Button style={{color: "#94ff8f", borderColor: "#94ff8f", marginBottom: ".5rem"}} variant="outlined"><Link style={{textDecoration: "none", color:"#94ff8f"}} to={"/item/"+product.id}>Ver detalle</Link></Button>
+        <Button sx={{color: "#94ff8f", borderColor: "#94ff8f", marginBottom: ".5rem"}} variant="outlined"><Link style={{textDecoration: "none", color:"#94ff8f"}} to={"/item/"+product.id}>Ver detalle</Link></Button>
       </CardContent>
       </Card> 
     </>
