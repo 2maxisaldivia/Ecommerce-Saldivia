@@ -2,48 +2,51 @@
 import { Box } from '@mui/system';
 import React, {useEffect, useState} from 'react'
 import ItemList from './ItemList';
-import { productsInfo } from './../db/db';
+import allProducts from './../db/db';
 import { useParams } from 'react-router-dom';
+import { SettingsSystemDaydreamTwoTone } from '@mui/icons-material';
 
 function ItemListContainer() {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")
+  const [error, setError] = useState(false)
   const { categoryId } = useParams()
 
-  useEffect(() => {
-    setLoading(true)
-    setError("")
-    console.log("id", categoryId)
-    
-    productsInfo()
-    .then(
-      items => {
-        
-        // Contiene todos los productos para que se renderizen en "/"
-        console.log("items", items) 
-        setProducts(items)
-        
-        // Lista de los elementos filtrados por categoria especifica 
-        const listaFiltrada = []
-        items.filter((item)=>{
-          if(item.category == categoryId){
-            listaFiltrada.push(item)
-            console.log("lo encontre")
-            console.log("lista de prueba", item)
-            setProducts(listaFiltrada)
-          }
-        })
-      })
-    .catch((error) => {
-      console.log(error)
-      setError(error)
-    })
-    .finally(()=>{
-      setLoading(false)
-    });
+ const fetchProducts = () => {
+   setLoading(true);
+   setError(false);
+   // console.log("categoryId", categoryId)
 
-  }, [categoryId])
+   const productsPromise = new Promise((res, rej) =>{
+     setTimeout(() => {
+       // Lista filtrada por categoria
+        if(categoryId){
+          console.log("categoryId", categoryId)
+          const listaFiltrada = allProducts.filter(item => item.category == categoryId);
+          console.log(listaFiltrada)
+          res(listaFiltrada)
+        }
+        // Lista con todos los productos 
+        else {
+          res(allProducts)
+        }
+     }, 1000);
+   })
+   
+   productsPromise
+   .then(
+    res => setProducts(res)
+   ).catch(
+     () => setError(true)
+   ).finally(
+     () => setLoading(false)
+   )
+ }
+
+ useEffect(() => {
+   fetchProducts()
+ }, [categoryId])
+ 
   
   return (
     <>

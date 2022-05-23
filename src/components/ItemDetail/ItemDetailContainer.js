@@ -1,40 +1,47 @@
-// @ts-check
+
 import React, {useEffect, useState} from 'react'
 import ItemDetail from './ItemDetail';
 import { Box } from '@mui/system';
-import { productsInfo } from '../db/db';
 import { useParams } from 'react-router-dom';
+import allProducts from './../db/db';
 
 function ItemDetailContainer() {
     const { id } = useParams()
     const [product, setProduct] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
 
-    useEffect(() => {
-        console.log("id", id)
-        productsInfo()
+    const fetchProduct = () => {
+        setLoading(true);
+        setError(false);
+        //console.log("Id", id)
+
+        const productPromise = new Promise((res, rej) =>{
+            setTimeout(() =>{
+                console.log("id", id)
+                const itemDetail = allProducts.find((item) => item.id == id);
+                res(itemDetail)
+            }, 1000)
+        })
+        productPromise
         .then(
-            items => {
-                console.log("items", items)
-                items.find((item)=> {
-                    if(item.id == id){
-                        console.log("lo encontre", item)
-                        setProduct(item)
-                        
-                    }
-                })
-            }
+            res => setProduct(res)
         ).catch(
-            reject => console.log(reject)
+            () => setError(true)
+        ).finally(
+            () => setLoading(false)
         )
-    }, [id])
+    }
 
+        useEffect(() => {
+        fetchProduct()
+        }, [id])
     
-    
-  return (
-    <Box sx={{width: "100%", height:"100%"}}>
-        <ItemDetail product={product}/>
-    </Box>
-  )
+        return (
+
+            <Box sx={{width: "100%", height:"100%"}}>
+                <ItemDetail product={product}/>
+            </Box>
+        )
 }
-
-export default ItemDetailContainer
+export default ItemDetailContainer;

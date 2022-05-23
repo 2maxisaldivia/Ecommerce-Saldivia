@@ -1,8 +1,5 @@
 //@ts-check
-export const productsInfo =  () => {
-    return new Promise((res, rej) =>{
-    setTimeout(() => {
-         res([
+const allProducts = [
             {
                 id: 1,
                 title: "Lomo Completo",
@@ -84,9 +81,5 @@ export const productsInfo =  () => {
                 category: "hamburguesas"
             }
             
-        ])
-        rej()
-    }, 1000)
-  })
-}
-
+        ]
+        export default allProducts
