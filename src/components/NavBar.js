@@ -1,21 +1,23 @@
 // @ts-check
-import React from "react"
+import React, { useContext } from "react"
 import { 
   AppBar, 
   Toolbar, 
   Typography, 
   Button,
   Box}  from '@mui/material';
+import Logo from "./images/Logo.png"
 import CartWidget from "./CartWidget";
 import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
 import LunchDiningIcon from '@mui/icons-material/LunchDining';
 import BrunchDiningIcon from '@mui/icons-material/BrunchDining';
 import { Link } from "react-router-dom";
+import { cartContext } from "./context/CartContextHOC";
 // import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 // import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 
 export default function NavBar() {
-
+    const {cart} = useContext(cartContext)
     return(
         <>  
       <AppBar sx={{ backgroundColor : "#000"}} position="static">
@@ -23,7 +25,7 @@ export default function NavBar() {
           
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           
-          <Link to={"/"}> <img style={{width: "7rem",}} src='./images/logo-app.png'/> </Link>
+            <Link to={"/"}> <img style={{width: "7rem",}} src={Logo}/> </Link>
           
           </Typography>
           
@@ -62,7 +64,7 @@ export default function NavBar() {
             <div style={colorStyle}>Registrarse</div>
             </Button> */}
 
-          <CartWidget numberCart={15} />
+          <CartWidget numberCart={cart.length} />
 
         </Toolbar>
       </AppBar>
