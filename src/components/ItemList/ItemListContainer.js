@@ -15,6 +15,7 @@ function ItemListContainer() {
  const fetchProducts = () => {
    setLoading(true);
    setError(false);
+   setProducts([]);
    // console.log("categoryId", categoryId)
 
    const productsPromise = new Promise((res, rej) =>{

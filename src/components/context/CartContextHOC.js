@@ -4,10 +4,10 @@ export const cartContext = createContext()
 
 const CartContextHOC = ({ children }) => {
   
-  const [cart, setCart] = useState([1, 2, 3, 4])
+  const [cart, setCart] = useState([])
   
   const addToCart = (item) => {
-    setCart([...cart, item])
+    setCart([item, ...cart])
     console.log("cart", cart)
   }
   

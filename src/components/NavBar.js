@@ -63,8 +63,10 @@ export default function NavBar() {
             <PersonAddAltIcon  />
             <div style={colorStyle}>Registrarse</div>
             </Button> */}
-
-          <CartWidget numberCart={cart.length} />
+          <Link to={"/cart"}>
+            <CartWidget numberCart={[cart.length]} />
+          </Link>
+          
             
         </Toolbar>
       </AppBar>

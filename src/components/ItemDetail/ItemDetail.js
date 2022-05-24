@@ -6,12 +6,15 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import ItemCount from './../ItemCount';
-
+import { useContext } from 'react';
+import { cartContext } from '../context/CartContextHOC';
 function ItemDetail({product}) {
-  function onAdd(cantidad){
-    console.log("cantidad", cantidad)
-    alert("Se agregaron" + " " + cantidad + " " + " productos al carrito")
-  }
+   // function onAdd(cantidad){
+  //   console.log("cantidad", cantidad)
+  //   alert("Se agregaron" + " " + cantidad + " " + " productos al carrito")
+  // }
+  const {addToCart} = useContext(cartContext)
+
   return (
     <>
       <Card sx={{ display: 'flex', width:"70%", height: "100%", marginTop:"3%", marginLeft: "15%", backgroundColor:"#000" }}>
@@ -34,7 +37,7 @@ function ItemDetail({product}) {
               <Typography sx={{display: "flex", color: "#94ff8f", fontSize: "20pt", fontWeight:"300"}} variant="subtitle1" component="div">
                   {product.description}
               </Typography>
-              <ItemCount stock={5} initial={0} onAdd={onAdd} sx={{display: "flex", alignContent: "center"}}/>
+              <ItemCount stock={5} initial={0} onAdd={() => addToCart(product)} sx={{display: "flex", alignContent: "center"}}/>
             </CardContent>
             
           </Box>
