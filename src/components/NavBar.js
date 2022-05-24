@@ -65,7 +65,7 @@ export default function NavBar() {
             </Button> */}
 
           <CartWidget numberCart={cart.length} />
-
+            
         </Toolbar>
       </AppBar>
     </>  
