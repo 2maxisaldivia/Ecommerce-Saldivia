@@ -5,7 +5,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import ItemCount from './../ItemCount';
+import ItemCount from './ItemCount';
 import { useContext } from 'react';
 import { cartContext } from '../context/CartContextHOC';
 function ItemDetail({product}) {
@@ -13,7 +13,7 @@ function ItemDetail({product}) {
   //   console.log("cantidad", cantidad)
   //   alert("Se agregaron" + " " + cantidad + " " + " productos al carrito")
   // }
-  const {addToCart} = useContext(cartContext)
+  const {addItemToCart} = useContext(cartContext)
 
   return (
     <>
@@ -37,9 +37,8 @@ function ItemDetail({product}) {
               <Typography sx={{display: "flex", color: "#94ff8f", fontSize: "20pt", fontWeight:"300"}} variant="subtitle1" component="div">
                   {product.description}
               </Typography>
-              <ItemCount stock={5} initial={0} onAdd={() => addToCart(product)} sx={{display: "flex", alignContent: "center"}}/>
+              <ItemCount stock={product.stock} initial={0} addItemToCart={addItemToCart} product={product} sx={{display: "flex", alignContent: "center"}}/>
             </CardContent>
-            
           </Box>
         </Box>
         

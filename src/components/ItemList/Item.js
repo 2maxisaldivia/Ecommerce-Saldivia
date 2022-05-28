@@ -12,7 +12,7 @@ function Item({product}) {
   
   return (
     <>
-      <Card sx={{ maxWidth: 300, margin: 4, backgroundColor:"#000"}}>
+      <Card sx={{ maxWidth: 300, margin: 4, mb: 2, backgroundColor:"#000"}}>
       <CardMedia component="img" sx={{height:"150px", width:"300px"}} src={product.pictureUrl} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div" color="#fff">{product.title}</Typography>
@@ -23,5 +23,4 @@ function Item({product}) {
     </>
   )
 }
-
-export default Item
+export default Item;

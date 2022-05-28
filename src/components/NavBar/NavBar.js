@@ -6,13 +6,13 @@ import {
   Typography, 
   Button,
   Box}  from '@mui/material';
-import Logo from "./images/Logo.png"
+import Logo from "../images/Logo.png"
 import CartWidget from "./CartWidget";
 import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
 import LunchDiningIcon from '@mui/icons-material/LunchDining';
 import BrunchDiningIcon from '@mui/icons-material/BrunchDining';
 import { Link } from "react-router-dom";
-import { cartContext } from "./context/CartContextHOC";
+import { cartContext } from "../context/CartContextHOC";
 // import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 // import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 

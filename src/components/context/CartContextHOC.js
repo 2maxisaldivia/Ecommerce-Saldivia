@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 
 export const cartContext = createContext()
 
@@ -6,14 +6,15 @@ const CartContextHOC = ({ children }) => {
   
   const [cart, setCart] = useState([])
   
-  const addToCart = (item) => {
+  const addItemToCart = (item, cantidad) => {
+    item.quantity = cantidad
     setCart([item, ...cart])
-    console.log("cart", cart)
+    console.log('cart', cart)
   }
-  
+
   return (
     <>
-      <cartContext.Provider value={{ cart, addToCart }} >
+      <cartContext.Provider value={{ cart, addItemToCart }} >
         {children}
       </cartContext.Provider>
     </> 
