@@ -1,4 +1,4 @@
-// @ts-check
+
 import React, {useEffect} from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -6,18 +6,22 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
+import ItemCount from './../ItemDetail/ItemCount';
+import { useContext } from 'react';
+import { cartContext } from './../context/CartContextHOC';
 
 function Item({product}) {
-  
+  const  {addItemToCart} = useContext(cartContext)
   
   return (
     <>
       <Card sx={{ maxWidth: 300, margin: 4, mb: 2, backgroundColor:"#000"}}>
       <CardMedia component="img" sx={{height:"150px", width:"300px"}} src={product.pictureUrl} />
-      <CardContent>
+      <CardContent sx={{textAlign: "center"}}>
         <Typography gutterBottom variant="h5" component="div" color="#fff">{product.title}</Typography>
         <h4 style={{color: "#fff"}}>${product.price}</h4>
-        <Button sx={{color: "#94ff8f", borderColor: "#94ff8f", marginBottom: ".5rem"}} variant="outlined"><Link style={{textDecoration: "none", color:"#94ff8f"}} to={"/item/"+product.id}>Ver detalle</Link></Button>
+        <Button sx={{color: "#94ff8f", borderColor: "#94ff8f", marginBottom: ".5rem"}} variant="outlined"><Link style={{textDecoration: "none", color:"#94ff8f"}} to={"/item/"+product.id}>detalle del producto</Link></Button>
+        <ItemCount stock={product.stock} initial={0} addItemToCart={addItemToCart} product={product} sx={{display: "flex", alignContent: "center"}}/>
       </CardContent>
       </Card> 
     </>

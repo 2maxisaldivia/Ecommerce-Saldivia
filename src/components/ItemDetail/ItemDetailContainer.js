@@ -14,11 +14,12 @@ function ItemDetailContainer() {
     const fetchProduct = () => {
         setLoading(true);
         setError(false);
+        setProduct([])
         //console.log("Id", id)
 
         const productPromise = new Promise((res, rej) =>{
             setTimeout(() =>{
-                console.log("id", id)
+                //console.log("id", id)
                 const itemDetail = allProducts.find((item) => item.id == id);
                 res(itemDetail)
             }, 1000)
@@ -40,7 +41,7 @@ function ItemDetailContainer() {
         return (
 
             <Box sx={{width: "100%", height:"100%"}}>
-                <ItemDetail product={product}/>
+                <ItemDetail product={product} loading={loading} error={error} />
             </Box>
         )
 }
