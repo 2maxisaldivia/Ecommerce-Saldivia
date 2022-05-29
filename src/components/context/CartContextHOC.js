@@ -1,35 +1,35 @@
 import React, { createContext, useState } from 'react'
-
+import { Stack, Alert } from '@mui/material'
 export const cartContext = createContext()
 
 const CartContextHOC = ({ children }) => {
   
   const [cart, setCart] = useState([])
+  const [totalQuantity, setTotalQuantity] = useState(0)
+  const [total, setTotal] = useState(0)
 
   const addItemToCart = (item, cantidad) => {
-    item.quantity = cantidad 
-    if(cantidad <= 0){
-      setCart([...cart])
-    } else {
-      setCart([ item, ...cart])
-      const productoRepetido = cart.find((product) => product.id == item.id)
-      console.log("productoRepetido", productoRepetido)
-      if(productoRepetido === undefined){
-        console.log("no se repite")
-        console.log("item.quantity", item.quantity)
-        console.log("cantidad", cantidad)
-        setCart([item, ...cart])
-
-      } else {
+    if(isInCart(item.id)){
+      if(item.quantity + cantidad <= item.stock){
+        item.quantity += cantidad
+        setTotalQuantity(totalQuantity + cantidad)
         setCart([...cart])
-        
+      
+      } else {
+        console.log("Stock insuficiente")
+        alert("Stock insuficiente, ingrese una cantidad de productos menor")
       }
+    } else {
+      item.quantity = cantidad
+      setCart([item, ...cart])
+      setTotalQuantity(totalQuantity + item.quantity)
     }
-  }
+  };
 
-  const findItem = (itemId) => {
-    const productRepeated = cart.find((product) => product.id = itemId)
-    return productRepeated
+  const isInCart = (itemId) => {
+    const repeatedProduct = cart.find((product) => product.id === itemId)
+    console.log(repeatedProduct)
+    return repeatedProduct
   }
 
   const removeItem = (itemId) => {

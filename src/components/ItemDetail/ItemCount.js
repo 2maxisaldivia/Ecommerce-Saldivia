@@ -23,7 +23,7 @@ function ItemCount({stock, initial, addItemToCart, product}) {
             <IconButton onClick={()=> setCount(count < stock ? count + 1 : count)} sx={{backgroundColor: "#272727", color: "#94ff8f", borderColor: "#000"}}> <AddIcon/> </IconButton>
         </ButtonGroup >
         </Box>
-        <Button onClick={()=> addItemToCart(product, count)} sx={{color: "#94ff8f", borderColor: "#94ff8f", marginTop:"1rem"}} variant="outlined">Añadir al carrito</Button>
+        <Button onClick={()=> addItemToCart(product, count)} sx={{color: "#94ff8f", borderColor: "#94ff8f", marginTop:"1rem"}} variant="outlined" >Añadir al carrito</Button>
         </Box>
     )
 }
