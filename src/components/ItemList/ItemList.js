@@ -12,7 +12,7 @@ function ItemList({products, loading, error}) {
       {products && products.map((product) => <Item key={product.id} product={product}/>)}
     </Box>
 
-    {error && "Error al cargar el catalogo de productos"}
+    {error && <h4>Error al cargar el catalogo de productos</h4>}
     </>
   )
 }

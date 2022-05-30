@@ -23,12 +23,24 @@ function ItemListContainer() {
         if(categoryId){
           console.log("categoryId", categoryId)
           const listaFiltrada = allProducts.filter(item => item.category == categoryId);
-          console.log(listaFiltrada)
-          res(listaFiltrada)
+          if(listaFiltrada.length > 0){
+            console.log("lista filtrada",listaFiltrada)
+            res(listaFiltrada)
+          } else {
+            setLoading(false)
+            setError(true)
+            
+          }
         }
         // Lista con todos los productos 
         else {
-          res(allProducts)
+          if(allProducts.length <= 0){
+            setLoading(false)
+            setError(true)
+          } else{
+            res(allProducts)
+          }
+          
         }
      }, 1000);
    })
