@@ -4,7 +4,7 @@ export const cartContext = createContext()
 const CartContextHOC = ({ children }) => {
   
   const [cart, setCart] = useState([])
-  const [totalQuantity, setTotalQuantity] = useState(0)
+  const [productsInCart, setProductsInCart] = useState(0)
   const [repeated, setRepeated] = useState(undefined)
   const [total, setTotal] = useState(0)
 
@@ -15,7 +15,7 @@ const CartContextHOC = ({ children }) => {
       } else{
         if(item.quantity + cantidad <= item.stock){
           item.quantity += cantidad
-          setTotalQuantity(totalQuantity + cantidad)
+          setProductsInCart(productsInCart + cantidad)
           console.log('item.quantity', item.quantity)
           console.log('item.quantity', item.price)
           setTotal(item.quantity * item.price + total)
@@ -34,7 +34,7 @@ const CartContextHOC = ({ children }) => {
       } else {
         item.quantity = cantidad
         setCart([item, ...cart])
-        setTotalQuantity(totalQuantity + item.quantity)
+        setProductsInCart(productsInCart + item.quantity)
         setTotal(item.price * item.quantity + total);
       }
     }
@@ -52,6 +52,7 @@ const CartContextHOC = ({ children }) => {
     if(itemToRemove){
       setCart([...itemToRemove])
       setTotal(total - item.price * item.quantity)
+      setProductsInCart(productsInCart - item.quantity)
     }
     
   }
@@ -60,11 +61,12 @@ const CartContextHOC = ({ children }) => {
     console.log('Cart', cart)
     setCart([])
     setTotal(0)
+    setProductsInCart(0)
   }
 
   return (
     <>
-      <cartContext.Provider value={{ cart, addItemToCart, removeItem, clearCart, total}} >
+      <cartContext.Provider value={{ cart, addItemToCart, removeItem, clearCart, total, productsInCart}} >
         {children}
       </cartContext.Provider>
     </> 
