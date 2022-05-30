@@ -36,6 +36,7 @@ const CartContextHOC = ({ children }) => {
         setCart([item, ...cart])
         setProductsInCart(productsInCart + item.quantity)
         setTotal(item.price * item.quantity + total);
+        
       }
     }
   };

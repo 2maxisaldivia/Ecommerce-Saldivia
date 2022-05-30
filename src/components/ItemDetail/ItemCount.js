@@ -17,7 +17,7 @@ function ItemCount({stock, initial, addItemToCart, product}) {
         setGoToCart(true)
         }
     }
-    
+
     // console.log("count", count)
     
 
@@ -25,9 +25,9 @@ function ItemCount({stock, initial, addItemToCart, product}) {
         <Box>
             <Box sx={{marginTop: "10%"}}>
                 <ButtonGroup disableElevation variant="contained" sx={{marginLeft: "2%", width: "8rem", marginRight: "1rem"}}>
-                    <IconButton onClick={() => setCount(count > initial ? count - 1 : count)} sx={{backgroundColor: "#272727", color: "#94ff8f", borderColor: "#000"}}> <RemoveIcon /> </IconButton>
+                    <IconButton onClick={() => setCount(count > initial ? count - 1 : count)} sx={{backgroundColor: "#272727", color: "#94ff8f", borderColor: "#000"}} disabled={count === initial}> <RemoveIcon /> </IconButton>
                     <Box sx={{fontSize: "18pt", color: "#fff", width: "100%", textAlign: "center",}}>{count}</Box>
-                    <IconButton onClick={()=> setCount(count < stock ? count + 1 : count)} sx={{backgroundColor: "#272727", color: "#94ff8f", borderColor: "#000"}}> <AddIcon/> </IconButton>
+                    <IconButton onClick={()=> setCount(count < stock ? count + 1 : count)} sx={{backgroundColor: "#272727", color: "#94ff8f", borderColor: "#000"}} disabled={count === stock}> <AddIcon/> </IconButton>
                 </ButtonGroup >
             </Box>
             {goToCart ?
