@@ -1,20 +1,21 @@
 
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import ItemCount from './ItemCount';
+import * as React from 'react';
 import { useContext } from 'react';
 import { cartContext } from '../context/CartContextHOC';
 import Loading from '../Loading/Loading';
+import ItemCount from './ItemCount';
 function ItemDetail({product, loading}) {
    // function onAdd(cantidad){
   //   console.log("cantidad", cantidad)
   //   alert("Se agregaron" + " " + cantidad + " " + " productos al carrito")
   // }
   const {addItemToCart} = useContext(cartContext)
+
   console.log("product", product)
   return (
     <>

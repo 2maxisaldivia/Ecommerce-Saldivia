@@ -1,20 +1,21 @@
-import React, {useContext} from 'react'
-import { cartContext } from './context/CartContextHOC'
+import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { cartContext } from './context/CartContextHOC';
 
 
 function Cart() {
-  const {cart, removeItem, clearCart} = useContext(cartContext)
+  const {cart, removeItem, clearCart, total} = useContext(cartContext)
   console.log("cart del cart", cart)
 
   return (
     <> 
     <div>Cart</div> 
+    <h1>Precio total: {total}</h1>
     {cart.length == 0 ? 
     <div>
     <h3>Aun no agregaste nada al carrito</h3>
@@ -35,7 +36,7 @@ function Cart() {
             <h4 style={{color: "#fff"}}>quantity: {product.quantity}</h4>
             <h4 style={{color: "#fff"}}>id: {product.id}</h4>
             <Button sx={{color: "#94ff8f", borderColor: "#94ff8f", marginBottom: ".5rem"}} variant="outlined">Finalizar compra</Button>
-            <Button  onClick={() => removeItem(product.id)} variant="outlined" color="error">Eliminar producto</Button>
+            <Button  onClick={() => removeItem(product)} variant="outlined" color="error">Eliminar producto</Button>
           </CardContent>
         </Card>
         </>

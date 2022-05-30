@@ -1,8 +1,8 @@
 // @ts-check
-import React from 'react'
-import Item from './Item';
-import Loading from './../Loading/Loading';
 import { Box } from '@mui/system';
+import React from 'react';
+import Loading from './../Loading/Loading';
+import Item from './Item';
 
 function ItemList({products, loading, error}) {
   return (

@@ -1,10 +1,9 @@
 // @ts-check
 import { Box } from '@mui/system';
-import React, {useEffect, useState} from 'react'
-import ItemList from './ItemList';
-import allProducts from './../db/db';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { SettingsSystemDaydreamTwoTone } from '@mui/icons-material';
+import allProducts from './../db/db';
+import ItemList from './ItemList';
 
 function ItemListContainer() {
   const [products, setProducts] = useState([])

@@ -1,18 +1,16 @@
 // @ts-check
-import React, { useContext } from "react"
-import { 
-  AppBar, 
-  Toolbar, 
-  Typography, 
-  Button,
-  Box}  from '@mui/material';
-import Logo from "../images/Logo.png"
-import CartWidget from "./CartWidget";
+import BrunchDiningIcon from '@mui/icons-material/BrunchDining';
 import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
 import LunchDiningIcon from '@mui/icons-material/LunchDining';
-import BrunchDiningIcon from '@mui/icons-material/BrunchDining';
+import {
+    AppBar, Box, Button, Toolbar,
+    Typography
+} from '@mui/material';
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { cartContext } from "../context/CartContextHOC";
+import Logo from "../images/Logo.png";
+import CartWidget from "./CartWidget";
 // import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 // import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 

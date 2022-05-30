@@ -1,8 +1,8 @@
 // @ts-check
-import React from 'react';
-import Button from '@mui/material/Button';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import StyledBadge from '@mui/material/Badge';
+import Button from '@mui/material/Button';
+import React from 'react';
 
 function CartWidget({numberCart}) {
 
