@@ -13,7 +13,9 @@ function ItemCount({stock, initial, addItemToCart, product}) {
 
     const onAdd = () => {
         addItemToCart(product, count)
+        if(count > 0){
         setGoToCart(true)
+        }
     }
     
     // console.log("count", count)
