@@ -22,7 +22,7 @@ function ItemDetail({product, loading}) {
     {loading ? 
       <Loading />
       :
-      product ? 
+      product.length !== 0 ? 
         <Card sx={{ display: 'flex', width:"70%", height: "100%", marginTop:"3%", marginLeft: "15%", backgroundColor:"#000" }}>
           <Box  sx={{display: "grid", gridTemplateColumns: "repeat(2, 1fr)"}}>
               <Box>
@@ -49,8 +49,7 @@ function ItemDetail({product, loading}) {
           </Box>
           
       </Card>
-      :
-      <h4>Error al cargar el detalle del producto</h4>
+      : "Hay error"
     }
    
     </>

@@ -7,6 +7,7 @@ const CartContextHOC = ({ children }) => {
   const [productsInCart, setProductsInCart] = useState(0)
   const [repeated, setRepeated] = useState(undefined)
   const [total, setTotal] = useState(0)
+  const [stock, setStock] = useState(0)
 
   const addItemToCart = (item, cantidad) => {
     if(isInCart(item.id)){

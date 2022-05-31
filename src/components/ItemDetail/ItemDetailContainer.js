@@ -10,22 +10,29 @@ function ItemDetailContainer() {
     const { id } = useParams()
     const [product, setProduct] = useState([])
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(false)
+  
+    console.log("id", id)
 
     useEffect(() => { 
         const db = getFirestore()
         setLoading(true);
-        setError(false);
-        setProduct([])
-        //console.log("Id", id)
+        
+        const docRef = doc(db, "products", id)
 
-        if(id){
-            const itemDetail = doc(db, "products", id)
-            getDoc(itemDetail).then((product) => {
-                setProduct({id: product.id, ...product.data()})
-                setLoading(false)
+        getDoc(docRef)
+            .then((snapshot) => {
+                if(snapshot.data() !== undefined) {
+                    setProduct({id: snapshot.id, ...snapshot.data()})
+                    console.log("snapshot id", snapshot.data())
+                    setLoading(false)
+                    
+                } else {
+                    console.log("No se encontro el producto")
+                    setLoading(false)
+                    
+                }
             })
-        }
+            
     }, [id])
     
 
@@ -59,7 +66,7 @@ function ItemDetailContainer() {
         return (
 
             <Box sx={{width: "100%", height:"100%"}}>
-                <ItemDetail product={product} loading={loading} error={error} />
+                <ItemDetail product={product} loading={loading}  />
             </Box>
         )
 }

@@ -7,6 +7,12 @@ import Item from './Item';
 function ItemList({products, loading, error}) {
   return (
     <>
+    {/* { loading ? 
+    <Loading />
+    : products != undefined ? 
+    products && products.map((product) => <Item key={product.id} product={product}/>)
+    : <h4>Error al cargar los productos</h4>} */}
+    
     {loading && <Loading />}
     <Box sx={{display: "grid", gridTemplateColumns: "repeat(5, 1fr)"}}>
       {products && products.map((product) => <Item key={product.id} product={product}/>)}
