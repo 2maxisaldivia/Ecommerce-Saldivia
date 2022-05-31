@@ -27,7 +27,6 @@ function Cart() {
     {cart.map((product) =>{
       return(
         <> 
-       
         <Card sx={{ maxWidth: 300, m: 4, bgcolor:"#000"}}>
           <CardMedia component="img" sx={{height:"150px", width:"300px"}} src={product.pictureUrl} />
           <CardContent>
