@@ -22,11 +22,11 @@ function Cart() {
     <Button sx={{color: "#94ff8f", borderColor: "#94ff8f", marginBottom: ".5rem", bgcolor:"#000"}} variant="contained"><Link style={{textDecoration: "none", color:"#94ff8f"}} to={"/"}>Ir a comprar</Link></Button>
     </div>
     : 
-    <Button onClick={()=> clearCart(cart)} variant="contained" color="error">Eliminar todos los productos</Button>} 
-    
+    <Button onClick={()=> clearCart(cart)} variant="contained" color="error">Eliminar todos los productos</Button>}
     {cart.map((product) =>{
       return(
         <> 
+        <Button onClick={()=> console.log("Ir al checkout")} variant="contained" color="success"><Link to={"/checkout"} style={{textDecoration: "none", color:"#94ff8f"}}>Finalizar compra</Link></Button>
         <Card sx={{ maxWidth: 300, m: 4, bgcolor:"#000"}}>
           <CardMedia component="img" sx={{height:"150px", width:"300px"}} src={product.pictureUrl} />
           <CardContent>
@@ -34,7 +34,6 @@ function Cart() {
             <h4 style={{color: "#fff"}}>${product.price}</h4>
             <h4 style={{color: "#fff"}}>quantity: {product.quantity}</h4>
             <h4 style={{color: "#fff"}}>id: {product.id}</h4>
-            <Button sx={{color: "#94ff8f", borderColor: "#94ff8f", marginBottom: ".5rem"}} variant="outlined">Finalizar compra</Button>
             <Button  onClick={() => removeItem(product)} variant="outlined" color="error">Eliminar producto</Button>
           </CardContent>
         </Card>

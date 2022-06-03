@@ -5,9 +5,9 @@ const CartContextHOC = ({ children }) => {
   
   const [cart, setCart] = useState([])
   const [productsInCart, setProductsInCart] = useState(0)
-  const [repeated, setRepeated] = useState(undefined)
+  //const [repeated, setRepeated] = useState(undefined)
   const [total, setTotal] = useState(0)
-  const [stock, setStock] = useState(0)
+  const [stateStock, setStateStock] = useState(0)
 
   const addItemToCart = (item, cantidad) => {
     if(isInCart(item.id)){
@@ -17,10 +17,9 @@ const CartContextHOC = ({ children }) => {
         if(item.quantity + cantidad <= item.stock){
           item.quantity += cantidad
           setProductsInCart(productsInCart + cantidad)
-          console.log('item.quantity', item.quantity)
-          console.log('item.quantity', item.price)
           setTotal(item.quantity * item.price + total)
           setCart([...cart])
+
         } else {
           console.log("Stock insuficiente")
           setTotal(total)
@@ -29,7 +28,6 @@ const CartContextHOC = ({ children }) => {
       } 
     } else {
       if(cantidad <= 0){
-        console.log("Ingreso un 0 en producto dif")
         setCart([...cart])
         setTotal(total)
       } else {
@@ -37,7 +35,7 @@ const CartContextHOC = ({ children }) => {
         setCart([item, ...cart])
         setProductsInCart(productsInCart + item.quantity)
         setTotal(item.price * item.quantity + total);
-        
+               
       }
     }
   };
@@ -68,7 +66,16 @@ const CartContextHOC = ({ children }) => {
 
   return (
     <>
-      <cartContext.Provider value={{ cart, addItemToCart, removeItem, clearCart, total, productsInCart}} >
+      <cartContext.Provider 
+        value={{ 
+          cart, 
+          addItemToCart, 
+          removeItem, 
+          clearCart, 
+          total, 
+          productsInCart, 
+          stateStock
+          }} >
         {children}
       </cartContext.Provider>
     </> 
