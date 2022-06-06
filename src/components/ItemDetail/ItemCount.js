@@ -5,6 +5,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { Button, ButtonGroup, IconButton } from '@mui/material';
 import { Box } from '@mui/system';
 import { Link } from 'react-router-dom';
+import styled from '@emotion/styled';
 
 function ItemCount({stock, initial, addItemToCart, product}) {
     
@@ -17,6 +18,22 @@ function ItemCount({stock, initial, addItemToCart, product}) {
         setGoToCart(true)
         }
     }
+
+    const StyledButton = styled(Button)({
+        '&:hover': {
+          backgroundColor: '#272727',
+          borderColor: '#94ff8f',
+          boxShadow: 'none',
+        },
+        '&:active': {
+          boxShadow: 'none',
+          backgroundColor: '#272727',
+          borderColor: '#94ff8f',
+        },
+        '&:focus': {
+          boxShadow: '0 0 0 0.2rem rgba(0,22,21,.2)',
+        },
+      });
 
     // console.log("count", count)
     
@@ -31,9 +48,9 @@ function ItemCount({stock, initial, addItemToCart, product}) {
                 </ButtonGroup >
             </Box>
             {goToCart ?
-            <Button sx={{color: "#94ff8f", borderColor: "#94ff8f", marginTop:"1rem"}} variant="outlined"> <Link to={"/cart"} style={{textDecoration: "none", color:"#94ff8f"}}> Finalizar la compra </Link></Button>
+            <StyledButton sx={{color: "#94ff8f", borderColor: "#94ff8f", marginTop:"1rem"}} variant="outlined"> <Link to={"/cart"} style={{textDecoration: "none", color:"#94ff8f"}}> Finalizar la compra </Link></StyledButton>
             :
-            <Button onClick={()=> onAdd()} sx={{color: "#94ff8f", borderColor: "#94ff8f", marginTop:"1rem"}} variant="outlined" > Añadir al carrito </Button>}
+            <StyledButton onClick={()=> onAdd()} sx={{color: "#94ff8f", borderColor: "#94ff8f", marginTop:"1rem"}} variant="outlined" > Añadir al carrito </StyledButton>}
         </Box>
     )
 }
