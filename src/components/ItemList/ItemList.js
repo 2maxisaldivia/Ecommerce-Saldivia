@@ -14,7 +14,7 @@ function ItemList({products, loading, error}) {
     : <h4>Error al cargar los productos</h4>} */}
     
     {loading && <Loading />}
-    <Box sx={{display: "grid", gridTemplateColumns: "repeat(5, 1fr)"}}>
+    <Box display="flex" flexWrap="wrap" sx={{width: "100%", justifyContent: "center"}}>
       {products && products.map((product) => <Item key={product.id} product={product}/>)}
     </Box>
 

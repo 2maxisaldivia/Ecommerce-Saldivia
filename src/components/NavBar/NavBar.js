@@ -8,15 +8,16 @@ import {
 } from '@mui/material';
 import React, { useContext } from "react";
 import { styled } from '@mui/material/styles';
+import Categories from './Categories';
 import { Link } from "react-router-dom";
 import { cartContext } from "../context/CartContextHOC";
 import Logo from "../images/Logo.png";
 import CartWidget from "./CartWidget";
+
 // import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 // import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
-import { IconButton } from '@mui/material';
 
-export default function NavBar() {
+function NavBar() {
     const {cart} = useContext(cartContext)
 
     const StyledButton = styled(Button)({
@@ -37,43 +38,44 @@ export default function NavBar() {
 
     return(
         <>  
-      <AppBar sx={{ backgroundColor : "#000"}} position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}> 
-            <Link to={"/"}> <img style={{width: "7rem",}} src={Logo}/> </Link>
-          </Typography>
-          
-            <StyledButton
-              sx={{backgroundColor: "#000", color: "#fff"}}
-              variant='contained'
-              startIcon={<BrunchDiningIcon />}
-            > 
-              <Link style={{textDecoration: "none", color: "#94ff8f"}} to="/category/lomos">
-                Lomos
-              </Link>
-            </StyledButton>
+        <AppBar
+        className='SSSSS'
+          sx={{ 
+            backgroundColor : "#000",
+          }} 
+          position="static"
+          >
 
-            <StyledButton
-              sx={{backgroundColor: "#000", color: "#fff"}}
-              variant='contained'
-              startIcon={<LocalPizzaIcon />}
-              > 
-              <Link style={{textDecoration: "none", color: "#94ff8f"}} to="/category/pizzas">
-                Pizzas
-              </Link>
-            </StyledButton>
+          <Toolbar sx={{justifyContent: "space-between"}}>
 
-            <StyledButton
-              sx={{backgroundColor: "#000", color: "#fff"}}
-              variant='contained'
-              startIcon={<LunchDiningIcon />}
-            > 
-              <Link style={{textDecoration: "none", color: "#94ff8f"}} to="/category/hamburguesas">
-                Hamburguesas
-              </Link>
-            </StyledButton>
+            <Box>
+              <StyledButton>
+                <Link to={"/"}> 
+                  <img style={{width: "5rem",}} src={Logo}/> 
+                </Link>
+              </StyledButton>
+            </Box>
 
-          {/* {Botones iniciar sesion y registrarse.} */}
+            <Box sx={{ display:"flex"}}>
+
+              <Categories />
+              <StyledButton>
+                <Link to={"/cart"}>
+                  <CartWidget numberCart={[cart.length]} />
+                </Link>
+              </StyledButton>
+
+            </Box>
+             
+
+          </Toolbar>
+        </AppBar>
+    </>  
+    )
+} 
+export default NavBar;
+
+{/* {Botones iniciar sesion y registrarse.} */}
 
           {/* <Button color="inherit">  
             <ExitToAppIcon  />
@@ -84,14 +86,3 @@ export default function NavBar() {
             <PersonAddAltIcon  />
             <div style={colorStyle}>Registrarse</div>
             </Button> */}
-            <StyledButton>
-              <Link to={"/cart"}>
-                <CartWidget numberCart={[cart.length]} />
-              </Link>
-            </StyledButton>
-        
-        </Toolbar>
-      </AppBar>
-    </>  
-    )
-}

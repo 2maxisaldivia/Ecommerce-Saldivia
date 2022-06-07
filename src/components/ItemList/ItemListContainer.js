@@ -1,10 +1,10 @@
 // @ts-check
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import allProducts from './../db/db';
+import {  useParams } from 'react-router-dom';
+//import allProducts from './../db/db';
 import ItemList from './ItemList';
-import { collection, doc, getDocs, getFirestore, query, where } from "firebase/firestore"
+import { collection, getDocs, getFirestore, query, where } from "firebase/firestore"
 
 function ItemListContainer() {
   const [products, setProducts] = useState([])
@@ -12,7 +12,6 @@ function ItemListContainer() {
   const [error, setError] = useState(false)
   const { categoryId } = useParams()
   console.log(categoryId)
-const navigate = useNavigate()
 
   useEffect(() => {
     setLoading(true)
@@ -95,12 +94,11 @@ const navigate = useNavigate()
  
   
   return (
-    <>
-    <Box sx={{display:"flex", flexDirection: "row"}}>
-
+    <Box sx={{width: "100%"}}>
+    <Box >
       <ItemList products={products} loading={loading} error= {error}/>
     </Box>
-    </>
+    </Box>
   )
 }
 export default ItemListContainer;

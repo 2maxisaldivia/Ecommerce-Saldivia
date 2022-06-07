@@ -11,7 +11,13 @@ function CartWidget({numberCart}) {
     
     return (
         <>
-        <StyledBadge badgeContent={productsInCart} sx={{"& .MuiBadge-badge": {color: "#000", backgroundColor: "#94ff8f"}}}>
+        <StyledBadge 
+            badgeContent={productsInCart} 
+            sx={{
+                "& .MuiBadge-badge": 
+                    {color: "#000", 
+                    backgroundColor: "#94ff8f"
+                    }}}>
             <ShoppingCartIcon sx={{color : "#fff"}} />
         </StyledBadge>
         </>

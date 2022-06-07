@@ -1,10 +1,12 @@
-import { Box, Button, TextField} from "@mui/material";
+import { Box, Button, TextField, Typography} from "@mui/material";
 import React, { useContext, useEffect, useState} from "react";
 import { cartContext } from './context/CartContextHOC';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
-
+import styled from "@emotion/styled";
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 
 function Checkout(){
   
@@ -12,8 +14,25 @@ function Checkout(){
   const { cart, total } = useContext(cartContext);
   const [id, setId] = useState("")
   const [formData, setFormData] = useState({name: "", surname:"", email: "", phone: 0});
-  
+  const StyledButton = styled(Button)({
+      '&:hover': {
+        backgroundColor: '#272727',
+        borderColor: '#94ff8f',
+        boxShadow: 'none',
+      },
+      '&:active': {
+        boxShadow: 'none',
+        backgroundColor: '#272727',
+        borderColor: '#94ff8f',
+      },
+      '&:focus': {
+        boxShadow: '0 0 0 0.2rem rgba(0,22,21,.2)',
+      },
+    });
+
   const handleChange = (event) => {
+
+    
         //console.log(event.target.name, event.target.value)
         setFormData({
           ...formData,
@@ -42,38 +61,45 @@ function Checkout(){
     <>
 
     { !id ?
-      <form sx={{ display: 'flex', flexDirection: "row"}} onSubmit={handleSubmit}>
-        <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-            <TextField 
+
+      <form sx={{ display: 'flex', width: "100%", height: "100%"}} onSubmit={handleSubmit}>
+        
+            <TextField
               id="input-with-sx" 
               label="Nombre" 
               variant="standard" 
               type="text"
               name="name"
               onChange={handleChange} 
+              sx={{left: "23%"}}
               />
 
-            <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+              <br/>
+
             <TextField 
               id="input-with-sx" 
               label="Apellido" 
               variant="standard" 
               type="text" 
               name="surname"
-              onChange={handleChange} 
-            />
+              onChange={handleChange}
+              sx={{left: "23%"}}
+              />
 
-            <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-            <TextField 
+              <br/>
+            
+             <TextField 
               id="input-with-sx" 
               label="Email" 
               variant="standard" 
               type="email"
               name="email"
               onChange={handleChange} 
-            />
-
-            <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+              sx={{left: "23%"}}
+              />
+            
+            <br/>
+            
             <TextField 
               id="input-with-sx" 
               label="Celular" 
@@ -81,21 +107,37 @@ function Checkout(){
               type="number" 
               name="phone"
               onChange={handleChange}
-            />
-      
+              sx={{left: "23%"}}
+              />
+        
+            <br/>
 
-            <Button 
+            <StyledButton 
+              sx={{mt: 3, left: "25%"}}
               variant="contained" 
               color="success"
               type="submit" 
               onSubmit={handleSubmit}>
               Finalizar compra
-            </Button>
+            </StyledButton>
         </form>
         :
         <Box>
-          <h1> Su compra {id} fue generada con exito </h1>
-          <Button variant="contained" color="success"><Link to={"/"}>Volver a comprar</Link></Button>
+          <Box sx={{width: "98%", height: "200px", bgcolor: "#94ff8f", justifyContent: "center", ml: .5, mt: 1}}>
+              <Typography variant="h5" sx={{color: "#000", textAlign: "center", pt: 4, fontWeight: 500, px: 4}}> ¡Su compra se ha generado de forma exitosa! </Typography>
+              <CheckCircleOutlineIcon sx={{ml: "43%", fontSize: 60, mt: 2}}/>
+          </Box>
+          <Box sx={{height: "200px", bgcolor: "#f4f4f4", my: 1, width:"98%", ml:.5}}>
+            <LocalShippingIcon  sx={{ml: "43%", fontSize: 60, pt: 4}}/>
+            <Typography sx={{textAlign: "center", px: 5}}>Los productos ya están viajando, le avisaremos cuando esten llegando</Typography>
+          </Box>
+          <Box sx={{height: "200px", bgcolor: "#fafafa", my: 1, width:"98%", ml:.5}}>
+            <ShoppingBagIcon sx={{ml: "43%", fontSize: 60, pt: 4}}/>
+            <Typography sx={{textAlign: "center", px: 7}}> El número de identificación de su compra es <em>{id}</em>, téngalo a mano, lo necesitará</Typography>
+          </Box>
+          <Box>
+            <StyledButton variant="contained" color="success" sx={{left: "25%"}}><Link to={"/"} style={{textDecoration: "none", color: "#fff"}}>Seguir comprando</Link></StyledButton>
+          </Box>
         </Box>
         
     }

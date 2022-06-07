@@ -4,11 +4,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { cartContext } from './../context/CartContextHOC';
-import ItemCount from './../ItemDetail/ItemCount';
 import { styled } from '@mui/material/styles';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 
 function Item({product}) {
   
@@ -30,13 +29,13 @@ function Item({product}) {
 
   return (
     <>
-      <Card sx={{ maxWidth: 300, margin: 4, mb: 2, backgroundColor:"#000"}}>
+      <Card sx={{ width: "80%", mx: 3, my: 2, bgcolor: "#000"}}>
         <CardMedia component="img" sx={{height:"150px", width:"300px"}} src={product.pictureUrl} />
         <CardContent sx={{textAlign: "center"}}>
-          <Typography gutterBottom variant="h5" component="div" color="#fff">{product.title}</Typography>
-          <h4 style={{color: "#fff"}}>Stock disponible: {product.stock}</h4>
-          <h3 style={{color: "#fff"}}>${product.price}</h3>
-          <StyledButton sx={{color: "#94ff8f", borderColor: "#94ff8f", marginBottom: ".5rem"}} variant="outlined"><Link style={{textDecoration: "none", color:"#94ff8f"}} to={"/item/"+product.id}>detalle del producto</Link></StyledButton>
+          <Typography gutterBottom variant="h5" component="div" sx={{color: "#fff", display:"block", fontWeight: "700"}}>{product.title}</Typography>
+          <Typography gutterBottom variant="h6" sx={{color: "#fff", display: "block"}}>Stock disponible: {product.stock}</Typography>
+          <Typography gutterBottom variant='h6' sx={{color: "#fff", display:"block", fontWeight: "700"}}>${product.price}</Typography>
+          <StyledButton sx={{color: "#94ff8f", borderColor: "#94ff8f", mb: ".5rem"}} variant="outlined" startIcon={<MenuBookIcon />}><Link style={{textDecoration: "none", color:"#94ff8f"}} to={"/item/"+product.id}>detalle del producto</Link></StyledButton>
         </CardContent>
       </Card> 
     </>

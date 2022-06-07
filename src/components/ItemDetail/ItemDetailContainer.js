@@ -65,7 +65,7 @@ function ItemDetailContainer() {
     
         return (
 
-            <Box sx={{width: "100%", height:"100%"}}>
+            <Box>
                 <ItemDetail product={product} loading={loading}  />
             </Box>
         )
