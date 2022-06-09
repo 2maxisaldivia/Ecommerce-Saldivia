@@ -1,18 +1,16 @@
 // @ts-check
-import Button from '@mui/material/Button';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { cartContext } from '../context/CartContextHOC';
 import EmptyCart from './EmptyCart';
-import DeleteIcon from '@mui/icons-material/Delete';
-import CreditCardIcon from '@mui/icons-material/CreditCard';
 import ProductsInCart from './ProductsInCart';
 import { Box } from '@mui/system';
 import ABProducts from './ABProducts';
+import { Typography } from '@mui/material';
 
 function Cart() {
   
-  const {cart, removeItem, clearCart, total} = useContext(cartContext)
+  const { cart, total } = useContext(cartContext)
   console.log("cart del cart", cart)
 
   return (
@@ -22,9 +20,12 @@ function Cart() {
         <EmptyCart />
       </>
       :
-      <Box className="AAAA" sx={{position: 'absolute', left: "7%", top:"10%" }}>
-      {cart.map((product) => <Box><ProductsInCart product={product} key={product.id} /></Box>)}
-      <ABProducts />
+      <Box sx={{position: 'absolute', left: "7%", top:"10%" }}>
+        {cart.map((product) => <Box><ProductsInCart product={product} key={product.id} /></Box>)}
+        <Box sx={{mb: 2, ml: 3, bgcolor: "#000", color: "#fff", borderRadius: "2.5%", width: "80%", left: "45%"}}>
+          <Typography variant='h6' sx={{fontWeight: 700, textAlign: "center"}}> Total: $ {total} </Typography>
+        </Box>
+        <ABProducts />
       </Box>
      
     }

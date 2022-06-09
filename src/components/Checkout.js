@@ -113,12 +113,12 @@ function Checkout(){
             <br/>
 
             <StyledButton 
-              sx={{mt: 3, left: "25%"}}
+              sx={{mt: 3, left: "35%"}}
               variant="contained" 
               color="success"
               type="submit" 
               onSubmit={handleSubmit}>
-              Finalizar compra
+                Comprar
             </StyledButton>
         </form>
         :
@@ -136,7 +136,7 @@ function Checkout(){
             <Typography sx={{textAlign: "center", px: 7}}> El número de identificación de su compra es <em>{id}</em>, téngalo a mano, lo necesitará</Typography>
           </Box>
           <Box>
-            <StyledButton variant="contained" color="success" sx={{left: "25%"}}><Link to={"/"} style={{textDecoration: "none", color: "#fff"}}>Seguir comprando</Link></StyledButton>
+            <StyledButton variant="contained" color="success" sx={{left: "25%", mb: 2}}><Link to={"/"} style={{textDecoration: "none", color: "#fff"}}>Seguir comprando</Link></StyledButton>
           </Box>
         </Box>
         

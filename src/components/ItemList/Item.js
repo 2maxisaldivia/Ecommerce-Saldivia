@@ -8,9 +8,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import { useContext } from 'react';
+import { cartContext } from './../context/CartContextHOC';
 
 function Item({product}) {
-  
+  const { cart } = useContext(cartContext)
+
   const StyledButton = styled(Button)({
     '&:hover': {
       backgroundColor: '#272727',
@@ -30,7 +33,7 @@ function Item({product}) {
   return (
     <>
       <Card sx={{ width: "80%", mx: 3, my: 2, bgcolor: "#000"}}>
-        <CardMedia component="img" sx={{height:"150px", width:"300px"}} src={product.pictureUrl} />
+        <CardMedia component="img" sx={{height:"150px", width:"100%"}} src={product.pictureUrl} />
         <CardContent sx={{textAlign: "center"}}>
           <Typography gutterBottom variant="h5" component="div" sx={{color: "#fff", display:"block", fontWeight: "700"}}>{product.title}</Typography>
           <Typography gutterBottom variant="h6" sx={{color: "#fff", display: "block"}}>Stock disponible: {product.stock}</Typography>

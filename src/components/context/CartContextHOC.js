@@ -1,48 +1,43 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 export const cartContext = createContext()
 
 const CartContextHOC = ({ children }) => {
   
   const [cart, setCart] = useState([])
   const [productsInCart, setProductsInCart] = useState(0)
-  //const [repeated, setRepeated] = useState(undefined)
-  const [total, setTotal] = useState(0)
-  const [stateStock, setStateStock] = useState(0)
+  const [ total , setTotal ] = useState(0)
 
   const addItemToCart = (item, cantidad) => {
-    if(isInCart(item.id)){
-      if(cantidad <= 0){
-        setCart([...cart])
-      } else{
-        if(item.quantity + cantidad <= item.stock){
-          item.quantity += cantidad
-          setProductsInCart(productsInCart + cantidad)
-          setTotal(item.quantity * item.price + total)
-          setCart([...cart])
-
-        } else {
-          console.log("Stock insuficiente")
-          setTotal(total)
-          alert("Stock insuficiente, ingrese una cantidad de productos menor")
-          }
-      } 
+    if(cantidad <= 0){
+      setCart([...cart])
     } else {
-      if(cantidad <= 0){
-        setCart([...cart])
-        setTotal(total)
+      if(!isInCart(item.id)){
+        if(cantidad > item.stock){
+          alert(`El stock es de ${item.stock} productos y usted ingresó ${cantidad} productos`)
+        } else{
+          item.quantity = cantidad
+          setCart([...cart, item])
+        }
       } else {
-        item.quantity = cantidad
-        setCart([item, ...cart])
-        setProductsInCart(productsInCart + item.quantity)
-        setTotal(item.price * item.quantity + total);
-               
+        const aux = cart.map((product) => {
+          if(product.id == item.id){
+            if(product.stock < product.quantity + cantidad){
+              alert(`El stock es de ${product.stock} y usted ingresó ${product.quantity + cantidad} productos`)
+              product.quantity = product.quantity - cantidad
+            }
+            const itemRepeated = {...product, quantity: product.quantity + cantidad}
+            return itemRepeated 
+        }
+        return product
+      })
+        setCart(aux)
       }
     }
-  };
+  }
 
   const isInCart = (itemId) => {
     const repeatedProduct = cart.find((product) => product.id === itemId)
-    //console.log(repeatedProduct)
+    console.log("repeated", repeatedProduct)
     return repeatedProduct
   }
 
@@ -51,18 +46,32 @@ const CartContextHOC = ({ children }) => {
     const itemToRemove = cart.filter(product => product.id != item.id)
     if(itemToRemove){
       setCart([...itemToRemove])
-      setTotal(total - item.price * item.quantity)
-      setProductsInCart(productsInCart - item.quantity)
     }
-    
   }
 
   const clearCart = (cart) => {
     console.log('Cart', cart)
     setCart([])
-    setTotal(0)
-    setProductsInCart(0)
+    
   }
+
+ useEffect(() => {
+  let partialPrice = 0
+  let partialQuantityProducts = 0
+  
+
+  cart.map(product => {
+    partialPrice += product.price * product.quantity
+    partialQuantityProducts += product.quantity
+    
+    return partialPrice, partialQuantityProducts
+  
+  })
+  setTotal(partialPrice)
+  setProductsInCart(partialQuantityProducts)
+  
+ }, [cart])
+ 
 
   return (
     <>
@@ -72,9 +81,9 @@ const CartContextHOC = ({ children }) => {
           addItemToCart, 
           removeItem, 
           clearCart, 
-          total, 
-          productsInCart, 
-          stateStock
+          isInCart,
+          productsInCart,
+          total
           }} >
         {children}
       </cartContext.Provider>

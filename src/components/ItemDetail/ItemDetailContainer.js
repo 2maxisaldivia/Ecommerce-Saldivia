@@ -2,7 +2,7 @@
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import allProducts from './../db/db';
+import allProducts from '../db/db';
 import ItemDetail from './ItemDetail';
 import { doc, getDoc, getFirestore } from "firebase/firestore"
 
@@ -11,7 +11,7 @@ function ItemDetailContainer() {
     const [product, setProduct] = useState([])
     const [loading, setLoading] = useState(false)
   
-    console.log("id", id)
+    //console.log("id", id)
 
     useEffect(() => { 
         const db = getFirestore()
@@ -23,11 +23,11 @@ function ItemDetailContainer() {
             .then((snapshot) => {
                 if(snapshot.data() !== undefined) {
                     setProduct({id: snapshot.id, ...snapshot.data()})
-                    console.log("snapshot id", snapshot.data())
+                    //console.log("snapshot id", snapshot.data())
                     setLoading(false)
                     
                 } else {
-                    console.log("No se encontro el producto")
+                    //console.log("No se encontro el producto")
                     setLoading(false)
                     
                 }

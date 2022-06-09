@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react'; 
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import BrunchDiningIcon from '@mui/icons-material/BrunchDining';
@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 export default function Categories() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

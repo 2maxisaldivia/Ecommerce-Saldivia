@@ -14,8 +14,8 @@ function ItemDetail({product, loading}) {
   //   console.log("cantidad", cantidad)
   //   alert("Se agregaron" + " " + cantidad + " " + " productos al carrito")
   // }
-  const {addItemToCart} = useContext(cartContext)
-  console.log("product", product)
+  const {addItemToCart } = useContext(cartContext)
+  // console.log("product", product)
   
   return (
     <>

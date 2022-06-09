@@ -53,6 +53,7 @@ function ItemCount({stock, initial, addItemToCart, product}) {
             {goToCart ?
             <StyledButton sx={{color: "#94ff8f", borderColor: "#94ff8f", marginTop:"1rem", width: "100%"}} variant="outlined" startIcon={<CreditCardIcon />}> <Link to={"/cart"} style={{textDecoration: "none", color:"#94ff8f"}}> Finalizar la compra </Link></StyledButton>
             :
+            
             <StyledButton onClick={()=> onAdd()} sx={{color: "#94ff8f", borderColor: "#94ff8f", marginTop:"1rem", width: "100%"}} variant="contained" startIcon={<ShoppingCartIcon />} > Añadir al carrito </StyledButton>}
         </Box>
     )
