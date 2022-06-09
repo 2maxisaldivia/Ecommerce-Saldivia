@@ -8,7 +8,7 @@ import { Box } from '@mui/system';
 import ABProducts from './ABProducts';
 import { Typography } from '@mui/material';
 
-function Cart() {
+function CartContainer() {
   
   const { cart, total } = useContext(cartContext)
   console.log("cart del cart", cart)
@@ -34,4 +34,4 @@ function Cart() {
   )
 }
 
-export default Cart
+export default CartContainer

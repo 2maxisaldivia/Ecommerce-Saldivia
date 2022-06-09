@@ -1,14 +1,14 @@
 // @ts-check
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import CartContextHOC from './components/context/CartContextHOC';
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/ItemList/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetail/ItemDetailContainer';
-import NotFound from './components/NotFound';
-import Cart from './components/Cart/Cart';
-import CartContextHOC from './components/context/CartContextHOC';
-import Checkout from './components/Checkout';
-import Loading from './components/Loading/Loading';
+import NotFound from './components/Error/NotFound';
+import Checkout from './components/Checkout/CheckoutContainer';
+import CartContainer from './components/Cart/CartContainer';
+
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
           <Route path='/' element={<ItemListContainer />}/>
           <Route path='/category/:categoryId' element={<ItemListContainer />}/>
           <Route path="/item/:id" element={<ItemDetailContainer />}/>
-          <Route path="/cart" element={<Cart />}/>
+          <Route path="/cart" element={<CartContainer />}/>
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/*" element={<NotFound />}/>
         </Routes>

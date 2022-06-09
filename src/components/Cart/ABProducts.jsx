@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
-import { cartContext } from './../context/CartContextHOC';
+import { cartContext } from '../context/CartContextHOC';
 import { Typography } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
