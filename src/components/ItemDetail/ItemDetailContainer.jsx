@@ -2,7 +2,6 @@
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import allProducts from '../db/db';
 import ItemDetail from './ItemDetail';
 import { doc, getDoc, getFirestore } from "firebase/firestore"
 

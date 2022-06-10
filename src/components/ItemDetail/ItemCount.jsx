@@ -38,6 +38,7 @@ function ItemCount({stock, initial, addItemToCart, product}) {
         },
       });
 
+
     // console.log("count", count)
     
 
@@ -45,9 +46,9 @@ function ItemCount({stock, initial, addItemToCart, product}) {
         <Box sx={{textAlign: "center"}}>
             <Box>
                 <ButtonGroup disableElevation variant="contained" sx={{width: "90%"}}>
-                    <IconButton onClick={() => setCount(count > initial ? count - 1 : count)} sx={{backgroundColor: "#272727", color: "#94ff8f", borderColor: "#000"}} disabled={count < initial}> <RemoveIcon /> </IconButton>
+                    <IconButton disableRipple={true} onClick={() => setCount(count > initial ? count - 1 : count)} sx={{backgroundColor: "#272727", color: "#94ff8f", borderColor: "#000"}} disabled={count < initial}> <RemoveIcon /> </IconButton>
                     <Box sx={{color: "#000", width: "100%", textAlign: "center",}}><Typography sx={{fontSize: "20pt"}}>{count}</Typography></Box>
-                    <IconButton onClick={()=> setCount(count < stock ? count + 1 : count)} sx={{backgroundColor: "#272727", color: "#94ff8f", borderColor: "#000"}} disabled={count === stock}> <AddIcon/> </IconButton>
+                    <IconButton disableRipple={true} onClick={()=> setCount(count < stock ? count + 1 : count)} sx={{backgroundColor: "#272727", color: "#94ff8f", borderColor: "#000"}} disabled={count === stock}> <AddIcon/> </IconButton>
                 </ButtonGroup >
             </Box>
             {goToCart ?
