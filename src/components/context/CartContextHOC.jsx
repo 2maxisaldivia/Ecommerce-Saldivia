@@ -54,8 +54,7 @@ const CartContextHOC = ({ children }) => {
   const clearCart = () => {
     //console.log('Cart', cart)
     setCart([])
-    saveCartInLocalStorage([])
-    
+    saveCartInLocalStorage([])   
   }
 
  useEffect(() => {
@@ -75,6 +74,7 @@ const CartContextHOC = ({ children }) => {
   setProductsInCart(partialQuantityProducts)
  }, [cart])
 
+
  const saveCartInLocalStorage = (cart) => {
   localStorage.setItem("cart", JSON.stringify(cart))
 }
@@ -84,6 +84,7 @@ const getCartInLocalStorage = () => {
     setCart(JSON.parse(localStorage.getItem("cart")))
   }
 }
+
 useEffect(() => {
   getCartInLocalStorage()
 }, [])
@@ -95,7 +96,7 @@ useEffect(() => {
     <>
       <cartContext.Provider 
         value={{ 
-          cart, 
+          cart,
           addItemToCart, 
           removeItem, 
           clearCart, 

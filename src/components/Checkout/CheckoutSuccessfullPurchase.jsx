@@ -1,12 +1,14 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Box, Button, Typography} from "@mui/material";
 import { Link } from 'react-router-dom';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import styled from "@emotion/styled";
+import { cartContext } from '../context/CartContextHOC';
 
 function CheckoutSuccessfullPurchase({id}) {
+
     const StyledButton = styled(Button)({
         '&:hover': {
           backgroundColor: '#272727',

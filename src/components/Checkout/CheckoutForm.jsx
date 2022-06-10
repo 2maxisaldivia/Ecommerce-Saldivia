@@ -6,12 +6,12 @@ import { TextField, Button, Alert, Typography } from '@mui/material';
 import styled from "@emotion/styled";
 import { useForm } from 'react-hook-form';
 import Box from '@mui/material/Box';
-import CheckoutWithoutProducts from './CheckoutWithoutProducts';
-
+import { useNavigate } from "react-router-dom";
 function CheckoutForm (){
   
+  const navigate = useNavigate();
   const db = getFirestore()
-  const { cart, total } = useContext(cartContext);
+  const { cart, total, clearCart } = useContext(cartContext);
   const [id, setId] = useState("")
   const StyledButton = styled(Button)({
     '&:hover': {
@@ -31,29 +31,33 @@ function CheckoutForm (){
   
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = formData =>{
-    console.log(formData);
+    //console.log(formData);
     if(cart.length > 0){
       const order = {
         buyer: formData,
         products: cart,
         total: total
       }
-      console.log("order", order)
+      //console.log("order", order)
       const orders = collection(db, "orders")
       addDoc(orders, order).then(({id}) => setId(id))
+      clearCart()
     }
   }
 
   useEffect(() => {
-    console.log("id",id)
+    //console.log("id",id)
   }, [id])
-  
+
+  useEffect(() => {
+    if(cart.length <= 0){
+      navigate('/')
+    }
+  }, [])
   
   return(
     <>
-    {cart.length <= 0 ?
-     <CheckoutWithoutProducts />
-     :
+    {
      id === "" ?
         <>
         <Box sx={{mt: 2}}>
