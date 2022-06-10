@@ -58,7 +58,7 @@ function ItemDetail({product, loading}) {
       //     </Box>   
       // </Card>
       <Box flexWrap="wrap" sx={{ display: "flex", flexDirection: "column", width: "100%", height: "100%", alignContent: "center"}}>
-        <Card sx={{ width: "60%", bgcolor: "#000", mx: 1, my: 2}}>
+        <Card sx={{ width: "80%", bgcolor: "#000", mx: 1, my: 2}}>
           <CardMedia component="img" sx={{height:"60%", width:"100%"}} src={product.pictureUrl} />
           <CardContent sx={{textAlign: "center"}}>
             <Typography gutterBottom variant="h5" component="div" sx={{color: "#94ff8f", display:"block", fontWeight: "700"}}>{product.title}</Typography>

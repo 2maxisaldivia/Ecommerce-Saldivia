@@ -1,8 +1,17 @@
 import React from 'react'
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, FormControl, Alert, Typography } from '@mui/material';
 import styled from "@emotion/styled";
+import { useForm } from 'react-hook-form';
+import Box from '@mui/material/Box';
 
-function Form({handleSubmit, handleChange}) {
+function Form({handleChange}) {
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const onSubmit = data =>{
+    console.log(data);
+  }
+  
+  const message = "Debe completar este campo"
+    
   const StyledButton = styled(Button)({
     '&:hover': {
       backgroundColor: '#272727',
@@ -20,53 +29,111 @@ function Form({handleSubmit, handleChange}) {
   });
 
   return (
-      <div>
-        <form sx={{ display: 'flex', width: "100%", height: "100%"}} onSubmit={handleSubmit}>
-            <TextField
-              id="input-with-sx" 
+      <Box sx={{mt: 2}}>
+        <form sx={{ display: 'flex', width: "80%", height: "100%", justifyContent: "center"}} onSubmit={handleSubmit(onSubmit)}>
+            <TextField 
               label="Nombre" 
               variant="standard" 
               type="text"
-              name="name"
-              onChange={handleChange} 
-              sx={{left: "23%"}}
+              sx={{left: "23%"}} 
+              {
+                ...register("name",
+                {required : {
+                  value: true,
+                  message: "El nombre es obligatorio"
+                }})
+              } 
               />
+              {
+              errors.name?.type === "required" && 
+              <Alert variant='outlined' severity="error" sx={{width: "60%", ml: "15%", mt: 1}}>
+                {errors.name.message}
+              </Alert>
+              }
 
-              <br/>
+            <br/>
 
-            <TextField 
-              id="input-with-sx" 
+            <TextField
               label="Apellido" 
               variant="standard" 
-              type="text" 
-              name="surname"
-              onChange={handleChange}
-              sx={{left: "23%"}}
-              />
-
-              <br/>
-            
-            <TextField 
-              id="input-with-sx" 
-              label="Email" 
-              variant="standard" 
-              type="email"
-              name="email"
-              onChange={handleChange} 
-              sx={{left: "23%"}}
-              />
-            
+              type="text"
+              sx={{left: "23%"}} 
+              {
+                ...register("surname",
+                {required : {
+                  value: true,
+                  message: "El apellido es obligatorio"
+                }})
+              } 
+            />
+            {
+            errors.surname?.type === "required" && 
+              <Alert variant='outlined' severity="error" sx={{width: "60%", ml: "15%", mt: 1}}>
+                {errors.surname.message}
+              </Alert>
+            }
             <br/>
             
             <TextField 
-              id="input-with-sx" 
+              label="Correo electrónico" 
+              variant="standard" 
+              type="email"
+              sx={{left: "23%"}}
+              {
+                ...register("email",
+                  {required : {
+                    value: true,
+                    message: "El email es obligatorio"
+                  },
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                    message: "El formato de correo no es válido"
+                  }
+                })
+              }  
+            />
+            {
+            errors.email && 
+              <Alert variant='outlined' severity="error" sx={{width: "60%", ml: "15%", mt: 1}}>
+                {errors.email.message}
+              </Alert>
+            }
+            <br/>
+            
+            <TextField 
               label="Celular" 
               variant="standard" 
               type="number" 
-              name="phone"
-              onChange={handleChange}
               sx={{left: "23%"}}
+              {
+                ...register("phone",
+                {required : {
+                  value: true,
+                  message: "El celular es obligatorio"
+                }, minLength: {
+                  value: 10, 
+                  message: "Debe contener al menos 10 caracteres"
+                }})
+              } 
               />
+              {
+              errors.phone?.type === "required" && 
+                <Alert variant='outlined' severity="error" sx={{width: "60%", ml: "15%", mt: 1}}>
+                  {errors.phone.message}
+                </Alert>
+              }
+              {/* {
+              errors.phone?.type === "minLength" && 
+                <Alert variant='outlined' severity="error" sx={{width: "60%", ml: "15%", mt: 1}}>
+                  <Typography>Debe contener mas de 10 caracteres</Typography> 
+                </Alert>
+              } */}
+              {
+              errors.phone?.type === "minLength" && 
+                <Alert variant='outlined' severity="error" sx={{width: "60%", ml: "15%", mt: 1}}>
+                  <Typography>Debe contener mas de 10 caracteres</Typography> 
+                </Alert>
+              }
         
             <br/>
 
@@ -79,7 +146,7 @@ function Form({handleSubmit, handleChange}) {
                 Comprar
             </StyledButton>
         </form>
-      </div>
+      </Box>
   )
 }
 
