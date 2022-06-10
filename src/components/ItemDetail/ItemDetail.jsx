@@ -66,7 +66,7 @@ function ItemDetail({product, loading}) {
             <Typography gutterBottom variant='h6' sx={{color: "#fff", display:"block", fontWeight: "700"}}>${product.price}</Typography>
           </CardContent>
         </Card>
-        <ItemCount stock={product.stock} initial={0} addItemToCart={addItemToCart} product={product} sx={{display: "flex", alignContent: "center"}}/>
+        <ItemCount stock={product.stock} initial={1} addItemToCart={addItemToCart} product={product} sx={{display: "flex", alignContent: "center"}}/>
       </Box>
       : "Hay error"
     }

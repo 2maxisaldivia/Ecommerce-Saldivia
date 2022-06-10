@@ -17,6 +17,7 @@ const CartContextHOC = ({ children }) => {
         } else{
           item.quantity = cantidad
           setCart([...cart, item])
+          saveCartInLocalStorage([...cart, item])
         }
       } else {
         const aux = cart.map((product) => {
@@ -37,25 +38,28 @@ const CartContextHOC = ({ children }) => {
 
   const isInCart = (itemId) => {
     const repeatedProduct = cart.find((product) => product.id === itemId)
-    console.log("repeated", repeatedProduct)
+    //console.log("repeated", repeatedProduct)
     return repeatedProduct
   }
 
   const removeItem = (item) => {
-    console.log("itemId", item.id)
-    const itemToRemove = cart.filter(product => product.id != item.id)
-    if(itemToRemove){
-      setCart([...itemToRemove])
+    //console.log("itemId", item.id)
+    const itemsToDontRemove = cart.filter(product => product.id != item.id)
+    if(itemsToDontRemove){
+      setCart([...itemsToDontRemove])
+      saveCartInLocalStorage([...itemsToDontRemove])
     }
   }
 
-  const clearCart = (cart) => {
-    console.log('Cart', cart)
+  const clearCart = () => {
+    //console.log('Cart', cart)
     setCart([])
+    saveCartInLocalStorage([])
     
   }
 
  useEffect(() => {
+
   let partialPrice = 0
   let partialQuantityProducts = 0
   
@@ -69,8 +73,22 @@ const CartContextHOC = ({ children }) => {
   })
   setTotal(partialPrice)
   setProductsInCart(partialQuantityProducts)
-  
  }, [cart])
+
+ const saveCartInLocalStorage = (cart) => {
+  localStorage.setItem("cart", JSON.stringify(cart))
+}
+
+const getCartInLocalStorage = () => {
+  if(localStorage.getItem("cart")){
+    setCart(JSON.parse(localStorage.getItem("cart")))
+  }
+}
+useEffect(() => {
+  getCartInLocalStorage()
+}, [])
+
+
  
 
   return (

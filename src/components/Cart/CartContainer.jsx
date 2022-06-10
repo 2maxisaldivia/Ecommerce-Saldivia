@@ -13,7 +13,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 function CartContainer() {
   
   const { cart, total } = useContext(cartContext)
-  console.log("cart del cart", cart)
+  //console.log("cart del cart", cart)
 
   return (
     <> 

@@ -6,6 +6,7 @@ import { TextField, Button, Alert, Typography } from '@mui/material';
 import styled from "@emotion/styled";
 import { useForm } from 'react-hook-form';
 import Box from '@mui/material/Box';
+import CheckoutWithoutProducts from './CheckoutWithoutProducts';
 
 function CheckoutForm (){
   
@@ -27,38 +28,20 @@ function CheckoutForm (){
       boxShadow: '0 0 0 0.2rem rgba(0,22,21,.2)',
     },
   });
-  // const [formData, setFormData] = useState({name: "", surname:"", email: "", phone: 0});
   
-
-  // const handleChange = (event) => {
-  //       //console.log(event.target.name, event.target.value)
-  //       setFormData({...formData, [event.target.name] : event.target.value })
-  //     }
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault()
-  //   //console.log({formData, cart, total})
-  //   const order = {
-  //     buyer: formData,
-  //     products: cart,
-  //     total: total
-  //   }
-  //   console.log("order", order)
-  //   const orders = collection(db, "orders")
-  //   addDoc(orders, order).then(({id}) => setId(id))
-  // }
-
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = formData =>{
     console.log(formData);
-    const order = {
-          buyer: formData,
-          products: cart,
-          total: total
-        }
-    console.log("order", order)
-    const orders = collection(db, "orders")
-    addDoc(orders, order).then(({id}) => setId(id))
+    if(cart.length > 0){
+      const order = {
+        buyer: formData,
+        products: cart,
+        total: total
+      }
+      console.log("order", order)
+      const orders = collection(db, "orders")
+      addDoc(orders, order).then(({id}) => setId(id))
+    }
   }
 
   useEffect(() => {
@@ -68,8 +51,10 @@ function CheckoutForm (){
   
   return(
     <>
-
-    { id === "" ?
+    {cart.length <= 0 ?
+     <CheckoutWithoutProducts />
+     :
+     id === "" ?
         <>
         <Box sx={{mt: 2}}>
         <form sx={{ display: 'flex', width: "80%", height: "100%", justifyContent: "center"}} onSubmit={handleSubmit(onSubmit)}>
