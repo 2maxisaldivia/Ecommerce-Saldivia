@@ -1,17 +1,17 @@
-import React from 'react'
-import { TextField, Button, FormControl, Alert, Typography } from '@mui/material';
+import React, { useContext, useEffect, useState} from "react";
+import { cartContext } from '../context/CartContextHOC';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import CheckoutSuccessfullPurchase from './CheckoutSuccessfullPurchase';
+import { TextField, Button, Alert, Typography } from '@mui/material';
 import styled from "@emotion/styled";
 import { useForm } from 'react-hook-form';
 import Box from '@mui/material/Box';
 
-function Form({handleChange}) {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = data =>{
-    console.log(data);
-  }
+function CheckoutForm (){
   
-  const message = "Debe completar este campo"
-    
+  const db = getFirestore()
+  const { cart, total } = useContext(cartContext);
+  const [id, setId] = useState("")
   const StyledButton = styled(Button)({
     '&:hover': {
       backgroundColor: '#272727',
@@ -27,9 +27,51 @@ function Form({handleChange}) {
       boxShadow: '0 0 0 0.2rem rgba(0,22,21,.2)',
     },
   });
+  // const [formData, setFormData] = useState({name: "", surname:"", email: "", phone: 0});
+  
 
-  return (
-      <Box sx={{mt: 2}}>
+  // const handleChange = (event) => {
+  //       //console.log(event.target.name, event.target.value)
+  //       setFormData({...formData, [event.target.name] : event.target.value })
+  //     }
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault()
+  //   //console.log({formData, cart, total})
+  //   const order = {
+  //     buyer: formData,
+  //     products: cart,
+  //     total: total
+  //   }
+  //   console.log("order", order)
+  //   const orders = collection(db, "orders")
+  //   addDoc(orders, order).then(({id}) => setId(id))
+  // }
+
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = formData =>{
+    console.log(formData);
+    const order = {
+          buyer: formData,
+          products: cart,
+          total: total
+        }
+    console.log("order", order)
+    const orders = collection(db, "orders")
+    addDoc(orders, order).then(({id}) => setId(id))
+  }
+
+  useEffect(() => {
+    console.log("id",id)
+  }, [id])
+  
+  
+  return(
+    <>
+
+    { id === "" ?
+        <>
+        <Box sx={{mt: 2}}>
         <form sx={{ display: 'flex', width: "80%", height: "100%", justifyContent: "center"}} onSubmit={handleSubmit(onSubmit)}>
             <TextField 
               label="Nombre" 
@@ -147,7 +189,13 @@ function Form({handleChange}) {
             </StyledButton>
         </form>
       </Box>
+        </>
+        :
+        <CheckoutSuccessfullPurchase id={id} />
+      }
+    
+    </>
+
   )
 }
-
-export default Form
+export default CheckoutForm

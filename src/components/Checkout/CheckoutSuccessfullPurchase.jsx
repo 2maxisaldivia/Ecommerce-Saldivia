@@ -1,12 +1,12 @@
 import React from 'react'
-import { Box, Button, TextField, Typography} from "@mui/material";
+import { Box, Button, Typography} from "@mui/material";
 import { Link } from 'react-router-dom';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import styled from "@emotion/styled";
 
-function FinalScreen({id}) {
+function CheckoutSuccessfullPurchase({id}) {
     const StyledButton = styled(Button)({
         '&:hover': {
           backgroundColor: '#272727',
@@ -45,4 +45,4 @@ function FinalScreen({id}) {
     )
 }
 
-export default FinalScreen
+export default CheckoutSuccessfullPurchase

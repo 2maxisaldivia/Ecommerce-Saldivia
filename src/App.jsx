@@ -6,8 +6,8 @@ import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/ItemList/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetail/ItemDetailContainer';
 import NotFound from './components/Error/NotFound';
-import Checkout from './components/Checkout/CheckoutContainer';
 import CartContainer from './components/Cart/CartContainer';
+import CheckoutForm from './components/Checkout/CheckoutForm';
 
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
           <Route path='/category/:categoryId' element={<ItemListContainer />}/>
           <Route path="/item/:id" element={<ItemDetailContainer />}/>
           <Route path="/cart" element={<CartContainer />}/>
-          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/checkout" element={<CheckoutForm />} />
           <Route path="/*" element={<NotFound />}/>
         </Routes>
       </BrowserRouter>
