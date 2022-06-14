@@ -6,7 +6,8 @@ function EmptyCart() {
   return (
     <Box 
         sx={{
-            width: "100%"
+            width: "100%",
+            mt: 9
         }}>
         <Box
         sx={{justifyItems: "center"}}>

@@ -22,7 +22,7 @@ function CartContainer() {
         <EmptyCart />
       </>
       :
-      <Box sx={{position: 'absolute', left: "7%", mt: 2 }}>
+      <Box sx={{position: 'absolute', left: "7%", mt: 8 }}>
         <Button startIcon={<ShoppingCartIcon />} sx={{mt: 1, }} variant="contained" color="success"><Link to={"/"} style={{textDecoration: "none", color:"#fff"}}>Seguir comprando</Link></Button>
         {cart.map((product) => <Box><ProductsInCart product={product} key={product.id} /></Box>)}
         <Box sx={{mb: 2, bgcolor: "#000", color: "#fff", borderRadius: "2.5%", width: "93%", mr: 20}}>
