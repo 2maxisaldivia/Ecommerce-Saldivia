@@ -47,29 +47,22 @@ function ItemCount({stock, initial, addItemToCart, product}) {
     return (
       <>
         <Box sx={{textAlign: "center"}}>
-          {!stockAvailable ?
-                <Box>
-                  <Alert variant="filled" severity="error" sx={{justifyContent: "center", px: "15%"}}>               
-                      Stock Insuficiente
-                  </Alert>
-                  <StyledButton sx={{color: "#94ff8f", borderColor: "#94ff8f", marginTop:"1rem", width: "100%"}} variant="outlined" startIcon={<CreditCardIcon />}> <Link to={"/cart"} style={{textDecoration: "none", color:"#94ff8f"}}> Finalizar la compra </Link></StyledButton>
-                </Box>
+          <Box>
+          {!goToCart ?
+                <>
+                <ButtonGroup disableElevation variant="contained" sx={{width: "90%"}}>
+                    <IconButton disableRipple={true} onClick={() => setCount(count > initial ? count - 1 : count)} sx={{backgroundColor: "#272727", color: "#94ff8f", borderColor: "#000"}} disabled={count < initial}> <RemoveIcon /> </IconButton>
+                    <Box sx={{color: "#000", width: "100%", textAlign: "center",}}><Typography sx={{fontSize: "20pt"}}>{count}</Typography></Box>
+                    <IconButton disableRipple={true} onClick={()=> setCount(count < stock ? count + 1 : count)} sx={{backgroundColor: "#272727", color: "#94ff8f", borderColor: "#000"}} disabled={count === stock}> <AddIcon/> </IconButton>
+                </ButtonGroup >
+              
+                  <StyledButton onClick={()=> onAdd()} sx={{color: "#94ff8f", borderColor: "#94ff8f", marginTop:"1rem", width: "100%", mb: 2}} variant="contained" startIcon={<ShoppingCartIcon />} > Añadir al carrito </StyledButton>
+              </>
                 :
-                <Box>
-                    <ButtonGroup disableElevation variant="contained" sx={{width: "90%"}}>
-                        <IconButton disableRipple={true} onClick={() => setCount(count > initial ? count - 1 : count)} sx={{backgroundColor: "#272727", color: "#94ff8f", borderColor: "#000"}} disabled={count < initial}> <RemoveIcon /> </IconButton>
-                        <Box sx={{color: "#000", width: "100%", textAlign: "center",}}><Typography sx={{fontSize: "20pt"}}>{count}</Typography></Box>
-                        <IconButton disableRipple={true} onClick={()=> setCount(count < stock ? count + 1 : count)} sx={{backgroundColor: "#272727", color: "#94ff8f", borderColor: "#000"}} disabled={count === stock}> <AddIcon/> </IconButton>
-                    </ButtonGroup >
-                  {goToCart ?
-                    <>
-                      <StyledButton sx={{color: "#94ff8f", borderColor: "#94ff8f", marginTop:"1rem", width: "100%", mb: 2}} variant="outlined" startIcon={<CreditCardIcon />}> <Link to={"/cart"} style={{textDecoration: "none", color:"#94ff8f"}}> Finalizar la compra </Link></StyledButton>
-                    </>
-                      :
-                      <StyledButton onClick={()=> onAdd()} sx={{color: "#94ff8f", borderColor: "#94ff8f", marginTop:"1rem", width: "100%", mb: 2}} variant="contained" startIcon={<ShoppingCartIcon />} > Añadir al carrito </StyledButton>}
-                  
-                </Box> 
-            }
+                <StyledButton sx={{color: "#94ff8f", borderColor: "#94ff8f", marginTop:"1rem", width: "100%", mb: 2}} variant="outlined" startIcon={<CreditCardIcon />}> <Link to={"/cart"} style={{textDecoration: "none", color:"#94ff8f"}}> Finalizar la compra </Link></StyledButton>
+          }
+            
+          </Box> 
         </Box>
       </>
     )
