@@ -1,10 +1,6 @@
 // @ts-check
-import BrunchDiningIcon from '@mui/icons-material/BrunchDining';
-import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
-import LunchDiningIcon from '@mui/icons-material/LunchDining';
 import {
     AppBar, Box, Button, Toolbar,
-    Typography
 } from '@mui/material';
 import React, { useContext } from "react";
 import { styled } from '@mui/material/styles';
@@ -14,8 +10,6 @@ import { cartContext } from "../context/CartContextHOC";
 import Logo from "../images/Logo.png";
 import CartWidget from "./CartWidget";
 
-// import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-// import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 
 function NavBar() {
     const {cart} = useContext(cartContext)
@@ -43,7 +37,7 @@ function NavBar() {
           sx={{ 
             backgroundColor : "#000",
           }} 
-          position="static"
+          position="fixed"
           >
 
           <Toolbar sx={{justifyContent: "space-between"}}>
@@ -64,10 +58,7 @@ function NavBar() {
                   <CartWidget numberCart={[cart.length]} />
                 </Link>
               </StyledButton>
-
             </Box>
-             
-
           </Toolbar>
         </AppBar>
     </>  

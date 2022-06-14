@@ -6,6 +6,7 @@ const CartContextHOC = ({ children }) => {
   const [cart, setCart] = useState([])
   const [productsInCart, setProductsInCart] = useState(0)
   const [ total , setTotal ] = useState(0)
+  const [stockAvailable, setStockAvailable] = useState(true)
 
   const addItemToCart = (item, cantidad) => {
     if(cantidad <= 0){
@@ -13,7 +14,8 @@ const CartContextHOC = ({ children }) => {
     } else {
       if(!isInCart(item.id)){
         if(cantidad > item.stock){
-          alert(`El stock es de ${item.stock} productos y usted ingresó ${cantidad} productos`)
+          setStockAvailable(false)
+          //alert(`El stock es de ${item.stock} productos y usted ingresó ${cantidad} productos`)
         } else{
           item.quantity = cantidad
           setCart([...cart, item])
@@ -23,7 +25,8 @@ const CartContextHOC = ({ children }) => {
         const aux = cart.map((product) => {
           if(product.id == item.id){
             if(product.stock < product.quantity + cantidad){
-              alert(`El stock es de ${product.stock} y usted ingresó ${product.quantity + cantidad} productos`)
+              setStockAvailable(false)
+              //alert(`El stock es de ${product.stock} y usted ingresó ${product.quantity + cantidad} productos`)
               product.quantity = product.quantity - cantidad
             }
             const itemRepeated = {...product, quantity: product.quantity + cantidad}
@@ -102,7 +105,8 @@ useEffect(() => {
           clearCart, 
           isInCart,
           productsInCart,
-          total
+          total, 
+          stockAvailable
           }} >
         {children}
       </cartContext.Provider>

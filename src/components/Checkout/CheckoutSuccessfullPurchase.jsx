@@ -26,7 +26,7 @@ function CheckoutSuccessfullPurchase({id}) {
       });
     return (
         <>
-        <Box>
+        <Box sx={{mt: 8}}>
             <Box sx={{width: "98%", height: "200px", bgcolor: "#94ff8f", justifyContent: "center", ml: .5, mt: 1}}>
                 <Typography variant="h5" sx={{color: "#000", textAlign: "center", pt: 4, fontWeight: 500, px: 4}}> ¡Su compra se ha generado de forma exitosa! </Typography>
                 <CheckCircleOutlineIcon sx={{ml: "43%", fontSize: 60, mt: 2}}/>

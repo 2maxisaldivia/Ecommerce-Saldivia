@@ -60,7 +60,7 @@ function CheckoutForm (){
     {
      id === "" ?
         <>
-        <Box sx={{mt: 2}}>
+        <Box sx={{mt: 10}}>
         <form sx={{ display: 'flex', width: "80%", height: "100%", justifyContent: "center"}} onSubmit={handleSubmit(onSubmit)}>
             <TextField 
               label="Nombre" 

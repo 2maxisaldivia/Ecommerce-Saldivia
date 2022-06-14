@@ -25,7 +25,7 @@ function ItemListContainer() {
       getDocs(products)
         .then((items) => {
           if(items.size === 0) {
-            console.log("No hay productos")
+            // console.log("No hay productos")
             setError(true)
           } else {
             setProducts(items.docs.map((item) => ({id: item.id, ...item.data()})))
@@ -37,8 +37,14 @@ function ItemListContainer() {
       products = collection(db, "products")
       getDocs(products)
         .then((items) => {
-          setProducts(items.docs.map((item) => ({id: item.id, ...item.data()})))
-          setLoading(false)
+          if(items.size === 0) {
+            // console.log("No hay productos")
+            setLoading(false)
+            setError(true)
+          } else {
+            setProducts(items.docs.map((item) => ({id: item.id, ...item.data()})))
+            setLoading(false)
+          }
         })
     }
 
@@ -95,9 +101,9 @@ function ItemListContainer() {
   
   return (
     <Box sx={{width: "100%"}}>
-    <Box >
-      <ItemList products={products} loading={loading} error= {error}/>
-    </Box>
+      <Box >
+        <ItemList products={products} loading={loading} error= {error}/>
+      </Box>
     </Box>
   )
 }

@@ -1,14 +1,13 @@
 
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
+import { Box, Card, CardContent, CardMedia, Button, Typography } from '@mui/material';
 import * as React from 'react';
 import { useContext } from 'react';
 import { cartContext } from '../context/CartContextHOC';
 import Loading from '../Loading/Loading';
 import ItemCount from './ItemCount';
+import { Link } from 'react-router-dom';
+import  ShoppingCartIcon  from '@mui/icons-material/ShoppingCart';
+import GenericError from './../Error/GenericError';
 function ItemDetail({product, loading}) {
    // function onAdd(cantidad){
   //   console.log("cantidad", cantidad)
@@ -22,41 +21,9 @@ function ItemDetail({product, loading}) {
     {loading ? 
       <Loading />
       :
-      product.length !== 0 ? 
-      //   <Card 
-      //     sx={{ 
-      //       position: 'absolute', 
-      //       width:"80%", 
-      //       height: "85%", 
-      //       top: "12.5%", 
-      //       left: "10%", 
-      //       bgcolor:"#000"
-      //     }}>
-
-      //     <Box sx={{display: "flex", flexDirection: "column"}}>
-      //         <Box>
-      //           <Typography sx={{display: "flex", paddingLeft: "5%",color: "#94ff8f", fontSize:"30pt", fontWeight:"700", textAlign: "center"}} component="div" variant="h6">
-      //               {product.title}
-      //           </Typography>
-      //           <CardMedia component="img" sx={{width: "40%", height: "30%", paddingLeft: "5%" }} image={product.pictureUrl} />
-      //           <Typography sx={{display: "flex", paddingLeft:"5%", color: "#94ff8f", fontSize: "20pt", fontWeight:"700"}} variant="subtitle1" component="div">
-      //               SubTotal: ${product.price}
-      //           </Typography>
-      //         </Box>
-
-      //         <Box sx={{display:"flex", flexWrap: "wrap", width: "100%"}}>
-      //           <CardContent sx={{width: "100%", marginLeft: "7%"}}>
-      //             <Typography sx={{display: "flex", justifyContent: "flex-start", color: "#94ff8f", fontSize: "20pt", fontWeight:"600", textAlign: "right", textDecoration: "underline"}} variant="subtitle1" component="div">
-      //                 Ingredientes:
-      //             </Typography>
-      //             <Typography sx={{display: "flex", color: "#94ff8f", fontSize: "20pt", fontWeight:"300"}} component="div">
-      //                 {product.description}
-      //             </Typography>
-      //             <ItemCount stock={product.stock} initial={0} addItemToCart={addItemToCart} product={product} sx={{display: "flex", alignContent: "center"}}/>
-      //           </CardContent>
-      //         </Box>
-      //     </Box>   
-      // </Card>
+      product.length !== 0 ?
+      <Box sx={{mt: 8}}>
+      <Button startIcon={<ShoppingCartIcon />} sx={{mt: 1, ml: 2 }} variant="contained" color="success"><Link to={"/"} style={{textDecoration: "none", color:"#fff"}}>Seguir comprando</Link></Button>
       <Box flexWrap="wrap" sx={{ display: "flex", flexDirection: "column", width: "100%", height: "100%", alignContent: "center"}}>
         <Card sx={{ width: "80%", bgcolor: "#000", mx: 1, my: 2}}>
           <CardMedia component="img" sx={{height:"60%", width:"100%"}} src={product.pictureUrl} />
@@ -68,7 +35,8 @@ function ItemDetail({product, loading}) {
         </Card>
         <ItemCount stock={product.stock} initial={1} addItemToCart={addItemToCart} product={product} sx={{display: "flex", alignContent: "center"}}/>
       </Box>
-      : "Hay error"
+      </Box> 
+      : <GenericError message={"Error al cargar el detalle del producto"} />
     }
    
     </>

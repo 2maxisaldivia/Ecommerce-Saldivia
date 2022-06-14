@@ -3,6 +3,7 @@ import { Box } from '@mui/system';
 import React from 'react';
 import Loading from '../Loading/Loading';
 import Item from './Item';
+import GenericError from './../Error/GenericError';
 
 function ItemList({products, loading, error}) {
   return (
@@ -14,11 +15,11 @@ function ItemList({products, loading, error}) {
     : <h4>Error al cargar los productos</h4>} */}
     
     {loading && <Loading />}
-    <Box display="flex" flexWrap="wrap" sx={{width: "100%", justifyContent: "center"}}>
+    <Box display="flex" flexWrap="wrap" sx={{width: "100%", justifyContent: "center", mt: 8}}>
       {products && products.map((product) => <Item key={product.id} product={product}/>)}
     </Box>
 
-    {error && <h4>Error al cargar el catalogo de productos</h4>}
+    {error && <GenericError  message={"Error al cargar el catalogo de productos"}/>}
     </>
   )
 }
