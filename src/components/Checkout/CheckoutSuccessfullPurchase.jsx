@@ -1,11 +1,11 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import { Box, Button, Typography} from "@mui/material";
 import { Link } from 'react-router-dom';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import styled from "@emotion/styled";
-import { cartContext } from '../context/CartContextHOC';
+
 
 function CheckoutSuccessfullPurchase({id}) {
 
@@ -29,7 +29,7 @@ function CheckoutSuccessfullPurchase({id}) {
         <Box sx={{mt: 8}}>
             <Box sx={{width: "98%", height: "200px", bgcolor: "#94ff8f", justifyContent: "center", ml: .5, mt: 1}}>
                 <Typography variant="h5" sx={{color: "#000", textAlign: "center", pt: 4, fontWeight: 500, px: 4}}> ¡Su compra se ha generado de forma exitosa! </Typography>
-                <CheckCircleOutlineIcon sx={{ml: "43%", fontSize: 60, mt: 2}}/>
+                <CheckCircleOutlineIcon sx={{ml: "43%", fontSize: 60, mt: 2, mb: 2}}/>
             </Box>
             <Box sx={{height: "200px", bgcolor: "#f4f4f4", my: 1, width:"98%", ml:.5}}>
                 <LocalShippingIcon  sx={{ml: "43%", fontSize: 60, pt: 4}}/>
