@@ -8,7 +8,6 @@ import ItemDetailContainer from './components/ItemDetail/ItemDetailContainer';
 import NotFound from './components/Error/NotFound';
 import CartContainer from './components/Cart/CartContainer';
 import CheckoutForm from './components/Checkout/CheckoutForm';
-import CheckoutSuccessfullPurchase from './components/Checkout/CheckoutSuccessfullPurchase';
 
 function App() {
   return (
@@ -17,7 +16,7 @@ function App() {
     <CartContextHOC>
       <BrowserRouter>
       <NavBar /> 
-        {/* 
+        
         <Routes>
           <Route path='/' element={<ItemListContainer />}/>
           <Route path='/category/:categoryId' element={<ItemListContainer />}/>
@@ -25,8 +24,7 @@ function App() {
           <Route path="/cart" element={<CartContainer />}/>
           <Route path="/checkout" element={<CheckoutForm />} />
           <Route path="/*" element={<NotFound />}/>
-        </Routes> */}
-        <CheckoutSuccessfullPurchase id={"fofofofoffooffofof"} />
+        </Routes>
       </BrowserRouter>
     </CartContextHOC>
 
