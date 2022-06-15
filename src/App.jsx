@@ -12,7 +12,7 @@ import CheckoutForm from './components/Checkout/CheckoutForm';
 
 function App() {
   return (
-    <>
+    <div className='App'>
    
     <CartContextHOC>
       <BrowserRouter>
@@ -29,7 +29,7 @@ function App() {
     </CartContextHOC>
 
   
-    </>
+    </div>
   );
 }
 

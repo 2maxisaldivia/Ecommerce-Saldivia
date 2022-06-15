@@ -10,6 +10,7 @@ import { styled } from '@mui/material/styles';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import { useContext } from 'react';
 import { cartContext } from '../context/CartContextHOC';
+import { Grid } from '@mui/material';
 
 function Item({product}) {
   const { cart } = useContext(cartContext)
@@ -31,17 +32,17 @@ function Item({product}) {
   });
 
   return (
-    <>
-      <Card sx={{ width: "80%", mx: 3, my: 2, bgcolor: "#000"}}>
+    <Grid className='grid-item' item xs={12} sm={6} md={4} lg={3} align="center" marginBottom={3}>
+      <Card sx={{ width: "80%", bgcolor: "#000"}}>
         <CardMedia component="img" sx={{height:"150px", width:"100%"}} src={product.pictureUrl} />
         <CardContent sx={{textAlign: "center"}}>
           <Typography gutterBottom variant="h5" component="div" sx={{color: "#fff", display:"block", fontWeight: "700"}}>{product.title}</Typography>
           <Typography gutterBottom variant="h6" sx={{color: "#fff", display: "block"}}>Stock: {product.stock}</Typography>
           <Typography gutterBottom variant='h6' sx={{color: "#fff", display:"block", fontWeight: "700"}}>${product.price}</Typography>
-          <StyledButton sx={{color: "#94ff8f", borderColor: "#94ff8f", mb: ".5rem"}} variant="outlined" startIcon={<MenuBookIcon />}><Link style={{textDecoration: "none", color:"#94ff8f"}} to={"/item/"+product.id}>detalle del producto</Link></StyledButton>
+          <StyledButton sx={{color: "#94ff8f", borderColor: "#94ff8f"}} variant="outlined" startIcon={<MenuBookIcon />}><Link style={{textDecoration: "none", color:"#94ff8f"}} to={"/item/"+product.id}>detalle del producto</Link></StyledButton>
         </CardContent>
       </Card> 
-    </>
+    </Grid>
   )
 }
 export default Item;

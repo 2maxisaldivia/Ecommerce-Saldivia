@@ -60,13 +60,12 @@ function CheckoutForm (){
     {
      id === "" ?
         <>
-        <Box sx={{mt: 10}}>
-        <form sx={{ display: 'flex', width: "80%", height: "100%", justifyContent: "center"}} onSubmit={handleSubmit(onSubmit)}>
+        <Box>
+        <form sx={{ display: 'flex', width: "80%", height: "100%"}} onSubmit={handleSubmit(onSubmit)}>
             <TextField 
               label="Nombre" 
               variant="standard" 
-              type="text"
-              sx={{left: "23%"}} 
+              type="text" 
               {
                 ...register("name",
                 {required : {
@@ -88,7 +87,6 @@ function CheckoutForm (){
               label="Apellido" 
               variant="standard" 
               type="text"
-              sx={{left: "23%"}} 
               {
                 ...register("surname",
                 {required : {
@@ -109,7 +107,6 @@ function CheckoutForm (){
               label="Correo electrónico" 
               variant="standard" 
               type="email"
-              sx={{left: "23%"}}
               {
                 ...register("email",
                   {required : {
@@ -135,7 +132,6 @@ function CheckoutForm (){
               label="Celular" 
               variant="standard" 
               type="number" 
-              sx={{left: "23%"}}
               {
                 ...register("phone",
                 {required : {
@@ -169,7 +165,7 @@ function CheckoutForm (){
             <br/>
 
             <StyledButton 
-              sx={{mt: 3, left: "35%"}}
+              sx={{mt: 3}}
               variant="contained" 
               color="success"
               type="submit" 

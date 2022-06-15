@@ -15,7 +15,6 @@ function ItemCount({stock, initial, addItemToCart, product}) {
     
     const [count, setCount] = useState(initial);
     const [goToCart, setGoToCart] = useState(false)
-    const {stockAvailable} = useContext(cartContext)
 
     const onAdd = () => {
       console.log(product.quantity)
@@ -46,23 +45,22 @@ function ItemCount({stock, initial, addItemToCart, product}) {
 
     return (
       <>
-        <Box sx={{textAlign: "center"}}>
-          <Box>
+        <Box >
           {!goToCart ?
                 <>
-                <ButtonGroup disableElevation variant="contained" sx={{width: "90%"}}>
+                <ButtonGroup disableElevation variant="contained" sx={{width: "70%"}}>
                     <IconButton disableRipple={true} onClick={() => setCount(count > initial ? count - 1 : count)} sx={{backgroundColor: "#272727", color: "#94ff8f", borderColor: "#000"}} disabled={count < initial}> <RemoveIcon /> </IconButton>
-                    <Box sx={{color: "#000", width: "100%", textAlign: "center",}}><Typography sx={{fontSize: "20pt"}}>{count}</Typography></Box>
+                    <Box sx={{color: "#fff", width: "100%", textAlign: "center",}}><Typography sx={{fontSize: "20pt"}}>{count}</Typography></Box>
                     <IconButton disableRipple={true} onClick={()=> setCount(count < stock ? count + 1 : count)} sx={{backgroundColor: "#272727", color: "#94ff8f", borderColor: "#000"}} disabled={count === stock}> <AddIcon/> </IconButton>
                 </ButtonGroup >
               
-                  <StyledButton onClick={()=> onAdd()} sx={{color: "#94ff8f", borderColor: "#94ff8f", marginTop:"1rem", width: "100%", mb: 2}} variant="contained" startIcon={<ShoppingCartIcon />} > Añadir al carrito </StyledButton>
+                  <StyledButton onClick={()=> onAdd()} sx={{color: "#94ff8f", borderColor: "#94ff8f", marginTop:"1rem", width: "100%", mb: 2}} variant="outlined" startIcon={<ShoppingCartIcon />} > Añadir al carrito </StyledButton>
               </>
                 :
-                <StyledButton sx={{color: "#94ff8f", borderColor: "#94ff8f", marginTop:"1rem", width: "100%", mb: 2}} variant="outlined" startIcon={<CreditCardIcon />}> <Link to={"/cart"} style={{textDecoration: "none", color:"#94ff8f"}}> Finalizar la compra </Link></StyledButton>
+                <StyledButton sx={{color: "#94ff8f", borderColor: "#94ff8f", mt:"1rem", width: "100%", mb: 2}} variant="outlined" startIcon={<CreditCardIcon />}> <Link to={"/cart"} style={{textDecoration: "none", color:"#94ff8f"}}> Finalizar la compra </Link></StyledButton>
           }
             
-          </Box> 
+        
         </Box>
       </>
     )

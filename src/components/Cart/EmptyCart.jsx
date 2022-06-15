@@ -6,8 +6,7 @@ function EmptyCart() {
   return (
     <Box 
         sx={{
-            width: "100%",
-            mt: 9
+            width: "100%"
         }}>
         <Box
         sx={{justifyItems: "center"}}>
@@ -39,10 +38,7 @@ function EmptyCart() {
                     color: "#94ff8f", 
                     borderColor: "#94ff8f", 
                     marginBottom: ".5rem", 
-                    bgcolor:"#000",
-                    alignSelf: "center",
-                    position: "absolute",
-                    left: "30%"
+                    bgcolor:"#000"
                 }} 
                 variant="contained">
                     <Link style={{textDecoration: "none", color:"#94ff8f"}} to={"/"}>
