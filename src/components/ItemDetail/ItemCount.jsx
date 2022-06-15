@@ -2,14 +2,12 @@
 import React, { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { Button, ButtonGroup, IconButton, Typography, Alert, Stack } from '@mui/material';
+import { Button, ButtonGroup, IconButton, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
-import { useContext } from 'react';
-import { cartContext } from './../context/CartContextHOC';
 
 function ItemCount({stock, initial, addItemToCart, product}) {
     
