@@ -32,15 +32,78 @@ function Item({product}) {
   });
 
   return (
-    <Grid className='grid-item' item xs={12} sm={6} md={4} lg={3} align="center" marginBottom={3}>
-      <Card sx={{ width: "80%", bgcolor: "#000"}}>
-        <CardMedia component="img" sx={{height:"150px", width:"100%"}} src={product.pictureUrl} />
-        <CardContent sx={{textAlign: "center"}}>
-          <Typography gutterBottom variant="h5" component="div" sx={{color: "#fff", display:"block", fontWeight: "700"}}>{product.title}</Typography>
-          <Typography gutterBottom variant="h6" sx={{color: "#fff", display: "block"}}>Stock: {product.stock}</Typography>
-          <Typography gutterBottom variant='h6' sx={{color: "#fff", display:"block", fontWeight: "700"}}>${product.price}</Typography>
-          <StyledButton sx={{color: "#94ff8f", borderColor: "#94ff8f"}} variant="outlined" startIcon={<MenuBookIcon />}><Link style={{textDecoration: "none", color:"#94ff8f"}} to={"/item/"+product.id}>detalle del producto</Link></StyledButton>
-        </CardContent>
+    <Grid 
+      className='grid-item' 
+      item 
+      xs={12} sm={6} md={4} lg={3} 
+      align="center" 
+      marginBottom={3}
+    >
+      <Card 
+        sx={{ 
+          width: "80%", 
+          bgcolor: "#000"
+        }}>
+          <CardMedia 
+            component="img" 
+            sx={{
+              height:"150px", 
+              width:"100%"
+            }} 
+            src={product.pictureUrl} 
+          />
+          <CardContent 
+            sx={{
+              textAlign: "center"
+              }}
+            >
+              <Typography 
+                gutterBottom 
+                variant="h5"
+                component="div" 
+                sx={{
+                  color: "#fff", 
+                  display:"block", 
+                  fontWeight: "700"
+                  }}
+                >
+                  {product.title}
+              </Typography>
+              <Typography 
+                gutterBottom 
+                variant="h6" 
+                sx={{
+                  color: "#fff",
+                  display: "block"
+                  }}
+              >
+                Stock: {product.stock}
+              </Typography>
+              <Typography 
+                gutterBottom 
+                variant='h6' 
+                sx={{
+                  color: "#fff", 
+                  display:"block", 
+                  fontWeight: "700"
+                  }}
+                >
+                  ${product.price}
+                </Typography>
+                <StyledButton 
+                sx={{
+                  color: "#94ff8f",
+                  borderColor: "#94ff8f"
+                  }} 
+                  variant="outlined"
+                  startIcon={<MenuBookIcon />}>
+                    <Link 
+                      style={{textDecoration: "none", color:"#94ff8f"}} 
+                      to={"/item/"+product.id}>
+                        detalle del producto
+                    </Link>
+                </StyledButton>
+          </CardContent>
       </Card> 
     </Grid>
   )
