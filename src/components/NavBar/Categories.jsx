@@ -1,13 +1,11 @@
 import React, { useState } from 'react'; 
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import BrunchDiningIcon from '@mui/icons-material/BrunchDining';
-import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
 import LunchDiningIcon from '@mui/icons-material/LunchDining';
-import {MenuItem, Typography} from '@mui/material';
+import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
+import BrunchDiningIcon from '@mui/icons-material/BrunchDining';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { Menu, MenuItem, Typography, Button, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Link } from "react-router-dom";
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 export default function Categories() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -37,7 +35,100 @@ export default function Categories() {
 
   return (
     <div>
-      <StyledButton
+      <Box>
+      <Button
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+        endIcon={<ArrowDropDownIcon />}
+        sx={{color: "#94ff8f", bgcolor: "#000"}}
+      >
+        Categorías
+      </Button>
+      <Menu
+        anchorEl={anchorEl}
+        open={open}
+        
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <MenuItem onClick={handleClose}> 
+          <StyledButton
+              sx={{
+                backgroundColor: "#000", 
+                color: "#fff",
+              }}
+              variant='contained'
+              startIcon={<BrunchDiningIcon />}
+              onClick={handleClose}
+              > 
+              <Link 
+                  style={{
+                    textDecoration: "none", 
+                    color: "#94ff8f"
+                  }} 
+                  to="/category/lomos"
+                  >
+                  <Typography> 
+                  Lomos 
+                  </Typography>
+              </Link>
+          </StyledButton>
+        </MenuItem>
+
+        <MenuItem onClick={handleClose}>
+          <StyledButton
+              sx={{
+                backgroundColor: "#000", 
+                color: "#fff",
+              }}
+              variant='contained'
+              onClick={handleClose}
+              startIcon={<LocalPizzaIcon />}
+              > 
+              <Link 
+              style={{
+                textDecoration: "none", 
+                color: "#94ff8f"
+              }} 
+              to="/category/pizzas"
+              >
+                  <Typography> 
+                  Pizzas
+                  </Typography>
+              </Link>
+          </StyledButton>
+        </MenuItem>
+
+        <MenuItem onClick={handleClose}>
+          <StyledButton
+          sx={{
+            backgroundColor: "#000",
+            color: "#fff",
+          }}
+          variant='contained'
+          onClick={handleClose}
+          startIcon={<LunchDiningIcon />}
+          > 
+          <Link 
+              style={{
+                textDecoration: "none", 
+                color: "#94ff8f",
+                
+              }} 
+              to="/category/hamburguesas">
+              <Typography> 
+              Burguers 
+              </Typography>
+          </Link>
+          </StyledButton> 
+        </MenuItem>
+      </Menu>
+    </Box>
+      {/* <StyledButton
         aria-controls={open ? 'demo-positioned-menu' : undefined}
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
@@ -125,7 +216,7 @@ export default function Categories() {
         </Link>
         </StyledButton> 
         </MenuItem>
-      </Menu>
+      </Menu> */}
     </div>
   );
 }
