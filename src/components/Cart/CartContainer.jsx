@@ -38,10 +38,11 @@ function CartContainer() {
         <EmptyCart />
       </>
       :
+      <>
+      <Typography variant="h3" marginBottom={2}>Carrito: ${total} </Typography>
       <Container sx={{bgcolor: "#f2f2f2"}} >
-        <Typography variant="h3" marginBottom={2}>Carrito: ${total} </Typography>
         <Grid container  justifyContent="center">
-          {cart.map((product) => <Grid item xs={12} sm={6} md={3} lg={4} align="center" marginBottom={2}><ProductsInCart product={product} /></Grid>)}
+          {cart.map((product) => <Grid item xs={12} sm={6} md={3} lg={4} align="center" marginBottom={2} marginTop={2}><ProductsInCart product={product} /></Grid>)}
         </Grid>
           {/* <Box sx={{mb: 2, bgcolor: "#000", color: "#fff", borderRadius: "2.5%"}}> */}
           <Grid container justifyContent="center" alignItems="center" marginTop={2} marginBottom={2} width={"100%"} >
@@ -56,6 +57,7 @@ function CartContainer() {
             </Grid>
           </Grid>
       </Container>
+      </>
      
     }
     </>

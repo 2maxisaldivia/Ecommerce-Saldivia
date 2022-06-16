@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# Menu-Go
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descripción
+El proyecto que contiene este repositorio consta de una tienda online de comida rápida desarrollada para el curso de React JS de Coderhouse.
 
-## Available Scripts
+El usuario inicialmente visualiza una pantalla principal donde se encuentran todos los productos, pero cuenta con la opción de filtrar los productos según la categoría que prefiera, por ejemplo, acceder a la categoría Pizzas. Además puede acceder al detalle específico de cada producto, donde encontrará una descripcion y la opcion de "Agregar al carrito".
 
-In the project directory, you can run:
+Una vez que los productos son agregados al carrito, se podrá finalizar la compra completando un formulario que contiene los campos nombre, apellido, correo electrónico y celular. Completado el mismo se le generará un numero de orden único para identificar su compra.
 
-### `npm start`
+El proyecto puede visualizarse en: https://menu-go-dfacd.web.app/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+            # Gif
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+--------------------------------------
+## Tecnologías utilizadas.
 
-### `npm run build`
+ <a href="https://es.reactjs.org/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/1200px-React.svg.png" width="50px"> </a><a href="https://mui.com/"><img src="https://mui.com/static/logo.png" width="50px"></a> <a href="https://reactrouter.com/"><img src="https://reacttraining.com/images/blog/reach-react-router-future.png" width="50px"></a> <a href="https://firebase.google.com/"><img src="https://firebase.google.com/downloads/brand-guidelines/PNG/logo-built_knockout.png?hl=es-419" width="90px" height="40px"></a> 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-----------------------------------------
+## Ejecución del proyecto
+Si se desea ejecutar el proyecto debe hacer lo siguiente: 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ * Clonar el repositorio
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+        git clone https://github.com/2maxisaldivia/Ecommerce-Saldivia.git
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+       cd Ecommerce-Saldivia
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* Instalar las dependencias
 
-## Learn More
+       npm install
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Inicializar la ejecución
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+       npm start
 
-### Code Splitting
+  El proyecto se inicializará en http://localhost:3000
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+-----------------------------------------
+## Consideraciones adicionales.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Firebase
+* A través de Firebase, se hizo el deploy de la aplicación y se almacenaron tanto los productos (con sus respectivas propiedades) como las órdenes generadas.
+### Material UI
+* Se utilizó Material UI para el diseño con el fin de agilizar el desarrollo estético de la aplicación 
 
-### Making a Progressive Web App
+### Diseño responsive
+ * Siguiendo con la estrategia de diseño "Mobile First", esta aplicación fue diseñada en primera instancia para ser visualizada en dispositivos moviles, y luego se implementó el diseño para dispositivos de escritorio.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+ ### Local Storage
+ * Se implementó el uso del almacenamiento del navegador para que los productos en el carrito persistan por mas que no hayan finalizado la compra y cierren la sesión
 
-### Advanced Configuration
+ ### Control de stock
+ * Se aplicó un control de stock muy básico a través de un alerta del navegador. Posteriormente, cuando se agregue una base de datos en tiempo real, se implementará un metodo de control aún mas reactivo a las interacciones del usuario.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+ ### React Hook Form
+ * Utilicé react-hook-form para la validacion del formularios
 
-### Deployment
+ ### React Router Dom.
+ * El routeo de la tienda virtual fue implementado con react-router-dom.
+---------------------------------------
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+
+
+

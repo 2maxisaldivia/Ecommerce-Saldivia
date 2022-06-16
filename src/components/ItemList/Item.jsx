@@ -8,12 +8,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import { useContext } from 'react';
-import { cartContext } from '../context/CartContextHOC';
+
 import { Grid } from '@mui/material';
 
 function Item({product}) {
-  const { cart } = useContext(cartContext)
 
   const StyledButton = styled(Button)({
     '&:hover': {
