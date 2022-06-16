@@ -8,11 +8,7 @@ El usuario inicialmente visualiza una pantalla principal donde se encuentran tod
 Una vez que los productos son agregados al carrito, se podrá finalizar la compra completando un formulario que contiene los campos nombre, apellido, correo electrónico y celular. Completado el mismo se le generará un numero de orden único para identificar su compra.
 
 El proyecto puede visualizarse en: https://menu-go-dfacd.web.app/
-
-
-            # Gif
-
-
+![Proyecto](/src/components/images/Funcionalidad.gif)
 --------------------------------------
 ## Tecnologías utilizadas.
 
