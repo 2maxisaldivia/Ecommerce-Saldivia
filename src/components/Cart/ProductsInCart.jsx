@@ -48,7 +48,7 @@ function ProductsInCart({product}) {
               variant="h5" 
               component="div" 
               sx={{
-                color: "#fff", 
+                color: "#94ff8f", 
                 display:"block", 
                 fontWeight: "700"
               }}>
@@ -64,7 +64,32 @@ function ProductsInCart({product}) {
                 mb: 1
                 }}
               >
-                Cantidad: {product.quantity}
+                Precio unitario: ${product.price}
+                
+            </Typography>
+            <Typography 
+              gutterBottom 
+              variant='h7' 
+              sx={{
+                color: "#fff", 
+                display:"block", 
+                fontWeight: "700", 
+                mb: 1
+                }}
+              >
+                  Cantidad: {product.quantity}
+            </Typography>
+            <Typography 
+              gutterBottom 
+              variant='h6' 
+              sx={{
+                color: "#94ff8f", 
+                display:"block", 
+                fontWeight: "700", 
+                mb: 1
+                }}
+              >
+                  Precio total: ${product.quantity * product.price}
             </Typography>
             <DeleteProduct product={product} />
           </CardContent>

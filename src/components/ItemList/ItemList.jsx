@@ -15,7 +15,7 @@ function ItemList({products, loading, error}) {
       {products && products.map((product) => <Item key={product.id} product={product}/>)}
     </Grid>
 
-    {error && <GenericError  message={"Error al cargar el catalogo de productos"}/>}
+    {error && <GenericError  message={"Parece que ha habido un error al cargar el catálogo de productos"}/>}
     </>
   )
 }

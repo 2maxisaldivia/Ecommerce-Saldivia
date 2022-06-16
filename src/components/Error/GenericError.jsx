@@ -1,29 +1,34 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
+import { Container, Box,  Typography } from '@mui/material'
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'; 
 function GenericError({message}) {
   return (
 
     <>
-        <Box 
+        <Container
+        maxWidth="xs"
         sx={{
-            width: "100%"
+            width: "100%",
+            mt: 2,
           }}>
         <Box
         sx={{justifyItems: "center"}}>
-
+            <ErrorOutlineIcon color="error" sx={{fontSize: 60, mt: 2}} />
             <Typography 
                 variant="h5" 
                 component="div"
                 sx={{
                   textAlign: "center",
-                  mt: 3
+                  mt: 1,
+                  pb: 3,
+                  color:"#000"
                 }}
                 > 
                {message}
             </Typography>
             
         </Box>
-    </Box>
+    </Container>
     </>
   )
 }

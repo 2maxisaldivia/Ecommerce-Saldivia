@@ -117,7 +117,7 @@ function ItemDetail({product, loading}) {
               </Grid>
             </Grid>
         </Box>
-        : <GenericError message={"Error al cargar el detalle del producto"} />
+        : <GenericError message={"Parece que ha habido un error al cargar el detalle del producto"} />
       }
    
     </Container>

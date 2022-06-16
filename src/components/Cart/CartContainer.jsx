@@ -39,7 +39,7 @@ function CartContainer() {
       </>
       :
       <>
-      <Typography variant="h3" marginBottom={2}>Carrito: ${total} </Typography>
+      <Typography variant="h3" marginBottom={2} marginTop={2}>Carrito: ${total} </Typography>
       <Container sx={{bgcolor: "#f2f2f2"}} >
         <Grid container  justifyContent="center">
           {cart.map((product) => <Grid item xs={12} sm={6} md={3} lg={4} align="center" marginBottom={2} marginTop={2}><ProductsInCart product={product} /></Grid>)}
@@ -53,7 +53,7 @@ function CartContainer() {
               <Button startIcon={< LocalMallIcon/>} sx={{mb: 1.5 }} variant="contained" color="success"><Link to={"/checkout"} style={{textDecoration: "none", color:"#fff"}}>Finalizar compra</Link></Button>
             </Grid>
             <Grid item xs={12} md={4} lg={4}>
-              <Button startIcon={< DeleteIcon/>} onClick={()=> clearCart(cart)} sx={{mb: 2}} variant="contained" color="error" >Eliminar todos los productos</Button>
+              <Button startIcon={< DeleteIcon/>} onClick={()=> clearCart(cart)} sx={{mb: 2}} variant="contained" color="error" >Vaciar carrito</Button>
             </Grid>
           </Grid>
       </Container>
