@@ -3,30 +3,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import React from 'react';
-import { Button } from 'bootstrap';
-import { styled } from '@mui/material/styles';
 import DeleteProduct from './DeleteProduct';
 
 
 
 function ProductsInCart({product}) {
-   
-    
-    const StyledButton = styled(Button)({
-        '&:hover': {
-          backgroundColor: '#272727',
-          borderColor: '#94ff8f',
-          boxShadow: 'none',
-        },
-        '&:active': {
-          boxShadow: 'none',
-          backgroundColor: '#272727',
-          borderColor: '#94ff8f',
-        },
-        '&:focus': {
-          boxShadow: '0 0 0 0.2rem rgba(0,22,21,.2)',
-        },
-      });
     //console.log("product", product)
     return (
         <Card 

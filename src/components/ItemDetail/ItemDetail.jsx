@@ -1,5 +1,5 @@
 
-import { Box, Card, CardContent, CardMedia, Button, Typography, Container } from '@mui/material';
+import { Box, Button, Typography, Container } from '@mui/material';
 import * as React from 'react';
 import { useContext } from 'react';
 import { cartContext } from '../context/CartContextHOC';
@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 import  ShoppingCartIcon  from '@mui/icons-material/ShoppingCart';
 import GenericError from './../Error/GenericError';
 import { Grid } from '@mui/material';
-import { maxWidth } from '@mui/system';
 
 function ItemDetail({product, loading}) {
    // function onAdd(cantidad){

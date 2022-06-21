@@ -1,11 +1,10 @@
 // @ts-check
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import StyledBadge from '@mui/material/Badge';
-import Button from '@mui/material/Button';
 import React, {useContext} from 'react';
 import { cartContext } from '../context/CartContextHOC';
-import { IconButton } from '@mui/material';
-function CartWidget({numberCart}) {
+
+function CartWidget() {
 
     const {productsInCart} = useContext(cartContext)
     

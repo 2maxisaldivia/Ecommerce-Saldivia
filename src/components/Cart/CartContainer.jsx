@@ -33,7 +33,7 @@ function CartContainer() {
 
   return (
     <> 
-      {cart.length == 0 ? 
+      {cart.length === 0 ? 
       <>
         <EmptyCart />
       </>

@@ -1,5 +1,4 @@
 // @ts-check
-import { Box } from '@mui/system';
 import React from 'react';
 import Loading from '../Loading/Loading';
 import Item from './Item';

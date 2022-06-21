@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { cartContext } from '../context/CartContextHOC';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import CheckoutSuccessfullPurchase from './CheckoutSuccessfullPurchase';

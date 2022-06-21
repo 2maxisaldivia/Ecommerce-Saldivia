@@ -1,6 +1,7 @@
 import React from 'react'
-import { Container, Box,  Typography } from '@mui/material'
+import { Typography, Box, Button, Container } from '@mui/material';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'; 
+import { Link } from 'react-router-dom';
 function GenericError({message}) {
   return (
 
@@ -28,6 +29,18 @@ function GenericError({message}) {
             </Typography>
             
         </Box>
+        <Button 
+                sx={{
+                    color: "#94ff8f", 
+                    borderColor: "#94ff8f", 
+                    marginBottom: ".5rem", 
+                    bgcolor:"#000"
+                }} 
+                variant="contained">
+                    <Link style={{textDecoration: "none", color:"#94ff8f"}} to={"/"}>
+                        Ir a comprar
+                    </Link>
+            </Button>
     </Container>
     </>
   )

@@ -2,17 +2,16 @@
 import {
     AppBar, Box, Button, Toolbar,
 } from '@mui/material';
-import React, { useContext } from "react";
+import React from "react";
 import { styled } from '@mui/material/styles';
 import Categories from './Categories';
 import { Link } from "react-router-dom";
-import { cartContext } from "../context/CartContextHOC";
+
 import Logo from "../images/Logo.png";
 import CartWidget from "./CartWidget";
 
 
 function NavBar() {
-    const {cart} = useContext(cartContext)
 
     const StyledButton = styled(Button)({
       '&:hover': {
@@ -45,7 +44,7 @@ function NavBar() {
             <Box>
               <StyledButton>
                 <Link to={"/"}> 
-                  <img style={{width: "5rem",}} src={Logo}/> 
+                  <img style={{width: "5rem",}} src={Logo} alt="logo"/> 
                 </Link>
               </StyledButton>
             </Box>
@@ -55,7 +54,7 @@ function NavBar() {
               <Categories />
               <StyledButton>
                 <Link to={"/cart"}>
-                  <CartWidget numberCart={[cart.length]} />
+                  <CartWidget />
                 </Link>
               </StyledButton>
             </Box>
@@ -66,14 +65,3 @@ function NavBar() {
 } 
 export default NavBar;
 
-{/* {Botones iniciar sesion y registrarse.} */}
-
-          {/* <Button color="inherit">  
-            <ExitToAppIcon  />
-            <div style={colorStyle}>Iniciar Sesion</div> 
-          </Button>
-
-          <Button color="inherit">
-            <PersonAddAltIcon  />
-            <div style={colorStyle}>Registrarse</div>
-            </Button> */}
